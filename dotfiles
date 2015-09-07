@@ -1,0 +1,64 @@
+#!/bin/bash
+# .dotfiles installation script for Mac OS X
+
+function help {
+    bold=$(tput bold)
+    normal=$(tput sgr0)
+
+    cat << EOF
+dotfiles organizes your Mac OS X dotfiles
+
+usage: dotfiles [<flag>] <command>
+
+Available flags are:
+  --filevault   Enables FileVault when used in combination with the install
+                command
+
+Available commands are:
+  help          Prints this help text
+  install       Installs dotfiles and sets up the environment on the current
+                system. This should be usually called only once
+  update        Updates the dotfiles and the environment setup
+  unlink        Unlinks the dotfiles so you can safely remove the .dotfiles
+                repository
+
+
+Copyright 2015 by Moritz Petersen
+
+
+EOF
+}
+
+function install {
+    # Install developer tools
+    xcode-select --install
+}
+
+function update {
+    echo ">> ${FUNCNAME[0]}"
+}
+
+function unlink {
+    echo ">> ${FUNCNAME[0]}"
+}
+
+flags=( filevault )
+commands=( help install update unlink )
+
+command=help
+for arg in $@; do
+    for f in $flags; do
+        if [ "$arg" = "--$f" ]; then
+            declare enable_$f=true
+        fi
+    done
+    for c in $commands; do
+        if [ "$arg" = "$c" ]; then
+            command=$c
+        fi
+    done
+done
+
+dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+
+$command
