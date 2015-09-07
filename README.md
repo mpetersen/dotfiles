@@ -25,5 +25,5 @@ In the `.dotfiles` repository folder you find a tool to manage the dotfiles: `do
 If you wish to enable FileVault, you can use this:
 
 ```
-~/.dotfiles/dotfiles setup --filevault
+~/.dotfiles/dotfiles --filevault setup
 ```
