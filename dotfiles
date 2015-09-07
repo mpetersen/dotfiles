@@ -53,7 +53,7 @@ function setup {
 function update {
     local installers=( brew brew-cask brew-fonts atom safari )
 
-    for installer in "${installers[@]}.sh"; do
+    for installer in "${installers[@].sh}"; do
         $dir/install/$installer
     done
 }
