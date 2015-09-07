@@ -10,9 +10,9 @@ To install the dotfiles repository, execute the following command in the termina
 git clone https://github.com/mpetersen/dotfiles.git && mv dotfiles ~/.dotfiles
 ```
 
-If you are executing this command on a new Mac, `git` might not be installed yet. However, you will be prompted to install the Developer Tools.
+If you are executing this command on a new Mac, `git` might not be installed yet. However, you will be prompted to install the command line developer tools.
 
-After installing the Developer Tools, execute the above command again and the dotfiles repository will be installed at `.dotfiles` in your home directory.
+After installing the developer tools, execute the above command again and the dotfiles repository will be installed at `.dotfiles` in your home directory.
 
 ## First setup
 
