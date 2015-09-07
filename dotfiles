@@ -1,6 +1,8 @@
 #!/bin/bash
 # .dotfiles installation script for Mac OS X
 
+dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+
 function help {
     bold=$(tput bold)
     normal=$(tput sgr0)
@@ -44,10 +46,17 @@ function setup {
 
     # Install Homebrew Fonts
     brew tap caskroom/fonts
+
+    update
 }
 
 function update {
     echo ">> ${FUNCNAME[0]}"
+    local installers=( brew brew-cask brew-fonts atom safari )
+
+    for i in "${installers[@]}"; do
+        $dir/install/$i.sh
+    done
 }
 
 function unlink {
@@ -70,7 +79,5 @@ for arg in $@; do
         fi
     done
 done
-
-dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 $command
