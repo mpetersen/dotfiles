@@ -51,11 +51,19 @@ function setup {
 }
 
 function update {
+    # Install
     local installers=( brew brew-cask brew-fonts atom safari )
 
-    for installer in "${installers[@].sh}"; do
+    for installer in "${installers[@]}"; do
         $dir/install/$installer
     done
+
+    # Link dotfiles
+    for dotfile in $( $dir/repo ); do
+        ln -s ~/.$dotfile $dir/repo/$dotfile
+    done
+
+    source ~/.bash_profile
 }
 
 function unlink {
