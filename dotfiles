@@ -51,11 +51,10 @@ function setup {
 }
 
 function update {
-    echo ">> ${FUNCNAME[0]}"
     local installers=( brew brew-cask brew-fonts atom safari )
 
-    for i in "${installers[@]}"; do
-        $dir/install/$i.sh
+    for installer in "${installers[@]}.sh"; do
+        $dir/install/$installer
     done
 }
 
