@@ -7,14 +7,14 @@ function main {
     # Available flags; passed as arguments with '--' prefix, e.g. --filevault
     # Will be mapped to variables with the prefix 'enable_', e.g.
     # enable_filevault
-    local flags=( filevault )
+    flags=( filevault )
 
     # Available commands; corresponding command function is prefixed with
     # 'cmd_', e.g. cmd_help
-    local commands=( help setup update unlink )
+    commands=( help setup update unlink )
 
     # Default command is 'help'
-    local command=help
+    command=help
     for arg in $@; do
         for f in "${flags[@]}"; do
             if [ "$arg" = "--$f" ]; then
@@ -93,7 +93,7 @@ function cmd_setup {
 
 function cmd_update {
     # Install
-    local installers=( brew brew-cask brew-fonts atom safari node )
+    local installers=( brew brew-cask brew-fonts atom safari node dock )
 
     for installer in "${installers[@]}"; do
         $base_dir/install/$installer
