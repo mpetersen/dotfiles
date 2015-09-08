@@ -14,7 +14,7 @@ usage: dotfiles [<flag>] <command>
 
 Available flags are:
   --filevault   Enables FileVault when used in combination with the setup
-                command
+                command (${bold}experimental!${normal})
 
 Available commands are:
   help          Prints this help text
@@ -32,6 +32,11 @@ EOF
 }
 
 function setup {
+    if ( enable_filevault ); then
+        sudo fdesetup enable -verbose -user `whoami`
+        read -p "Press [Enter] to continue..."
+    fi
+
     # Install developer tools
     xcode-select --install &> /dev/null
 
@@ -52,7 +57,7 @@ function setup {
 
 function update {
     # Install
-    local installers=( brew brew-cask brew-fonts atom safari )
+    local installers=( brew brew-cask brew-fonts atom safari node )
 
     for installer in "${installers[@]}"; do
         $dir/install/$installer
@@ -86,5 +91,9 @@ for arg in $@; do
         fi
     done
 done
+
+if [ $command <> "help" ]; then
+    sudo -v
+fi
 
 $command
