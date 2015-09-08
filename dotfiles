@@ -3,43 +3,6 @@
 
 base_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
-function main {
-    echo "main"
-    # Available flags; passed as arguments with '--' prefix, e.g. --filevault
-    # Will be mapped to variables with the prefix 'enable_', e.g.
-    # enable_filevault
-    flags=( filevault )
-
-    # Available commands; corresponding command function is prefixed with
-    # 'cmd_', e.g. cmd_help
-    commands=( help setup update unlink )
-
-    # Default command is 'help'
-    command=help
-    for arg in $@; do
-        echo "arg: " $arg
-        for f in "${flags[@]}"; do
-            if [ "$arg" = "--$f" ]; then
-                declare enable_$f=true
-            fi
-        done
-        for c in "${commands[@]}"; do
-            echo "c: " $c
-            if [ "$arg" = "$c" ]; then
-                command=$c
-            fi
-        done
-    done
-
-    # Extend sudo timeout when not help command
-    if [ $command != "help" ]; then
-        sudo -v
-    fi
-
-    # Call command function
-    cmd_$command
-}
-
 function cmd_help {
     bold=$(tput bold)
     normal=$(tput sgr0)
@@ -114,5 +77,34 @@ function cmd_unlink {
     echo ">> ${FUNCNAME[0]}"
 }
 
-# Call main function
-main $@
+# Available flags; passed as arguments with '--' prefix, e.g. --filevault
+# Will be mapped to variables with the prefix 'enable_', e.g.
+# enable_filevault
+flags=( filevault )
+
+# Available commands; corresponding command function is prefixed with
+# 'cmd_', e.g. cmd_help
+commands=( help setup update unlink )
+
+# Default command is 'help'
+command=help
+for arg in $@; do
+    for f in "${flags[@]}"; do
+        if [ "$arg" = "--$f" ]; then
+            declare enable_$f=true
+        fi
+    done
+    for c in "${commands[@]}"; do
+        if [ "$arg" = "$c" ]; then
+            command=$c
+        fi
+    done
+done
+
+# Extend sudo timeout when not help command
+if [ $command != "help" ]; then
+    sudo -v
+fi
+
+# Call command function
+cmd_$command
