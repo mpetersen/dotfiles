@@ -1,9 +1,43 @@
 #!/bin/bash
 # .dotfiles installation script for Mac OS X
 
-dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+base_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
-function help {
+function main {
+    # Available flags; passed as arguments with '--' prefix, e.g. --filevault
+    # Will be mapped to variables with the prefix 'enable_', e.g.
+    # enable_filevault
+    local flags=( filevault )
+
+    # Available commands; corresponding command function is prefixed with
+    # 'cmd_', e.g. cmd_help
+    local commands=( help setup update unlink )
+
+    # Default command is 'help'
+    local command=help
+    for arg in $@; do
+        for f in "${flags[@]}"; do
+            if [ "$arg" = "--$f" ]; then
+                declare enable_$f=true
+            fi
+        done
+        for c in "${commands[@]}"; do
+            if [ "$arg" = "$c" ]; then
+                command=$c
+            fi
+        done
+    done
+
+    # Extend sudo timeout when not help command
+    if [ $command != "help" ]; then
+        sudo -v
+    fi
+
+    # Call command function
+    cmd_$command
+}
+
+function cmd_help {
     bold=$(tput bold)
     normal=$(tput sgr0)
 
@@ -31,7 +65,8 @@ Copyright 2015 by Moritz Petersen
 EOF
 }
 
-function setup {
+function cmd_setup {
+    # Enable FileVault - WARNING: experimental!
     if ( $enable_filevault ); then
         sudo fdesetup enable -verbose -user `whoami`
         read -p "Press [Enter] to continue..."
@@ -52,48 +87,29 @@ function setup {
     # Install Homebrew Fonts
     brew tap caskroom/fonts
 
-    update
+    # Call update function
+    cmd_update
 }
 
-function update {
+function cmd_update {
     # Install
     local installers=( brew brew-cask brew-fonts atom safari node )
 
     for installer in "${installers[@]}"; do
-        $dir/install/$installer
+        $base_dir/install/$installer
     done
 
     # Link dotfiles
-    for dotfile in $( $dir/repo ); do
-        ln -s ~/.$dotfile $dir/repo/$dotfile
+    for dotfile in $( $base_dir/repo ); do
+        ln -s ~/.$dotfile $base_dir/repo/$dotfile
     done
 
     source ~/.bash_profile
 }
 
-function unlink {
+function cmd_unlink {
     echo ">> ${FUNCNAME[0]}"
 }
 
-flags=( filevault )
-commands=( help setup update unlink )
-
-command=help
-for arg in $@; do
-    for f in "${flags[@]}"; do
-        if [ "$arg" = "--$f" ]; then
-            declare enable_$f=true
-        fi
-    done
-    for c in "${commands[@]}"; do
-        if [ "$arg" = "$c" ]; then
-            command=$c
-        fi
-    done
-done
-
-if [ $command != "help" ]; then
-    sudo -v
-fi
-
-$command
+# Call main function
+main
