@@ -32,6 +32,8 @@ EOF
 }
 
 function cmd_setup {
+    echo "Setup: enable_filevault: $enable_filevault"
+
     # Enable FileVault - WARNING: experimental!
     if ( $enable_filevault ); then
         sudo fdesetup enable -verbose -user `whoami`
