@@ -32,11 +32,8 @@ EOF
 }
 
 function cmd_setup {
-    echo "Setup: enable_filevault: $enable_filevault"
-
     # Enable FileVault - WARNING: experimental!
     if [ $enable_filevault ]; then
-        echo "Enable FileVault"
         sudo fdesetup enable -verbose -user `whoami`
         read -p "Press [Enter] to continue..."
     fi
@@ -106,7 +103,6 @@ done
 
 # Extend sudo timeout when not help command
 if [ $command != "help" ]; then
-    echo "Extend sudo timeout"
     sudo -v
 fi
 
