@@ -8,7 +8,7 @@ function pause {
 }
 
 function log {
-    echo $1
+    echo "=== $1 ==="
 }
 
 function cmd_help {
@@ -61,7 +61,7 @@ function cmd_setup {
     log "Install Homebrew Fonts"
     brew tap caskroom/fonts
 
-    log "Call update command"
+    log "Execute update command"
     cmd_update
 }
 
@@ -70,6 +70,7 @@ function cmd_update {
     local installers=( brew brew-cask brew-fonts atom safari node dock )
 
     for installer in "${installers[@]}"; do
+        log "Execute $installer installer"
         $base_dir/install/$installer
     done
 
@@ -114,5 +115,5 @@ if [ $command != "help" ]; then
     sudo -v
 fi
 
-# Call command function
+log "Execute $command command"
 cmd_$command

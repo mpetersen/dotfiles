@@ -1,0 +1,26 @@
+#!/bin/bash
+
+formulae = (
+    dockutil
+    go
+    lftp
+    maven
+    mongodb
+    plantuml
+    rdate
+    sslscan
+    wget
+    cowsay
+    gnupg
+    graphviz
+    libpng
+    mercurial
+    openssl
+    postgresql
+    readline
+    tree
+    bash-git-prompt
+    bash-completion
+)
+
+brew install ${formulae[@]}
