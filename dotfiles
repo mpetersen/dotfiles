@@ -67,7 +67,15 @@ function cmd_setup {
 
 function cmd_update {
     # Install
-    local installers=( brew brew-cask brew-fonts atom safari node dock )
+    local installers=(
+        brew-cask
+        brew
+        brew-fonts
+        atom
+        safari
+        node
+        dock
+    )
 
     for installer in "${installers[@]}"; do
         log "Execute $installer installer"
