@@ -3,6 +3,14 @@
 
 base_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
+function pause {
+    read -p "Press [Enter] to continue..."
+}
+
+function log {
+    echo $1
+}
+
 function cmd_help {
     bold=$(tput bold)
     normal=$(tput sgr0)
@@ -32,28 +40,28 @@ EOF
 }
 
 function cmd_setup {
-    # Enable FileVault - WARNING: experimental!
+    log "Enable FileVault - WARNING: experimental!"
     if [ $enable_filevault ]; then
         sudo fdesetup enable -verbose -user `whoami`
-        read -p "Press [Enter] to continue..."
+        pause
     fi
 
-    # Install developer tools
+    log "Install developer tools"
     xcode-select --install &> /dev/null
 
-    # Install Homebrew
+    log "Install Homebrew"
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-    # Install Homebrew Cask
+    log "Install Homebrew Cask"
     brew install caskroom/cask/brew-cask
 
-    # Install Homebrew Versions
+    log "Install Homebrew Versions"
     brew tap homebrew/versions
 
-    # Install Homebrew Fonts
+    log "Install Homebrew Fonts"
     brew tap caskroom/fonts
 
-    # Call update function
+    log "Call update command"
     cmd_update
 }
 
@@ -65,7 +73,7 @@ function cmd_update {
         $base_dir/install/$installer
     done
 
-    # Link dotfiles
+    log "Link dotfiles"
     for dotfile in $( $base_dir/repo ); do
         ln -s ~/.$dotfile $base_dir/repo/$dotfile
     done
@@ -86,7 +94,7 @@ flags=( filevault )
 # 'cmd_', e.g. cmd_help
 commands=( help setup update unlink )
 
-# Default command is 'help'
+log "Default command is 'help'"
 command=help
 for arg in $@; do
     for f in "${flags[@]}"; do
@@ -101,7 +109,7 @@ for arg in $@; do
     done
 done
 
-# Extend sudo timeout when not help command
+log "Extend sudo timeout (when not executing help command)"
 if [ $command != "help" ]; then
     sudo -v
 fi
