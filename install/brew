@@ -8,7 +8,6 @@ formulae=(
     mongodb
     plantuml
     rdate
-    sslscan
     wget
     cowsay
     gnupg
