@@ -40,8 +40,8 @@ EOF
 }
 
 function cmd_setup {
-    log "Enable FileVault - WARNING: experimental!"
     if [ $enable_filevault ]; then
+        log "Enable FileVault - WARNING: experimental!"
         sudo fdesetup enable -verbose -user `whoami`
         pause
     fi
