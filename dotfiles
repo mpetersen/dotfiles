@@ -73,10 +73,10 @@ function cmd_setup {
 }
 
 function cmd_update {
-    log "Update App Store software"
-    softwareupdate -ia
-
     if [ !$enable_noinstall ]; then
+        log "Update App Store software"
+        softwareupdate -ia
+
         # Install
         local installers=(
             brew-cask
