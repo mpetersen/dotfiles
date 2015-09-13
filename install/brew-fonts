@@ -1,3 +1,4 @@
+# Names of the fonts without the 'font-' prefix
 formulae=(
     open-sans
     open-sans-condensed
@@ -5,4 +6,4 @@ formulae=(
     source-sans-pro
 )
 
-brew cask install ${formulae[@]}
+brew cask install font-${formulae[@]}

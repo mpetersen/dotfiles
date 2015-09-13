@@ -1,4 +1,6 @@
-formulae=(
+apm update
+
+packages=(
     atom-beautify
     go-plus
     graphviz-preview
@@ -8,4 +10,6 @@ formulae=(
     plantuml-viewer
 )
 
-brew cask install ${formulae[@]}
+for package in "${packages[@]}"; do
+    apm install $package
+done
