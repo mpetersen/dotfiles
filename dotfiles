@@ -23,6 +23,10 @@ usage: dotfiles [<flag>] <command>
 Available flags are:
   --filevault   Enables FileVault when used in combination with the setup
                 command (${bold}experimental!${normal})
+  --nolink      Disables dotfiles linking in combination with the update
+                command
+  --noinstall   Disables installer execution in combination with the
+                update commnand
 
 Available commands are:
   help          Prints this help text
@@ -61,31 +65,46 @@ function cmd_setup {
     log "Install Homebrew Fonts"
     brew tap caskroom/fonts
 
+    log "Install Homebrew Completions"
+    brew tap homebrew/completions
+
     log "Execute update command"
     cmd_update
 }
 
 function cmd_update {
-    # Install
-    local installers=(
-        brew-cask
-        brew
-        brew-fonts
-        atom
-        safari
-        node
-        dock
-    )
+    log "Update App Store software"
+    softwareupdate -ia
 
-    for installer in "${installers[@]}"; do
-        log "Execute $installer installer"
-        $base_dir/install/$installer
-    done
+    log "Update brew formulae"
+    brew update
+    brew upgrade
 
-    log "Link dotfiles"
-    for dotfile in $( $base_dir/repo ); do
-        ln -s ~/.$dotfile $base_dir/repo/$dotfile
-    done
+    if [ !$enable_noinstall ]; then
+        # Install
+        local installers=(
+            brew-cask
+            brew
+            brew-fonts
+            atom
+            safari
+            node
+            dock
+            osx-defaults
+        )
+
+        for installer in "${installers[@]}"; do
+            log "Execute $installer installer"
+            $base_dir/install/$installer
+        done
+    fi
+
+    if [ !$enable_nolink ]; then
+        log "Link dotfiles"
+        for dotfile in $( $base_dir/repo ); do
+            ln -s ~/.$dotfile $base_dir/repo/$dotfile
+        done
+    fi
 
     source ~/.bash_profile
 }
@@ -97,7 +116,11 @@ function cmd_unlink {
 # Available flags; passed as arguments with '--' prefix, e.g. --filevault
 # Will be mapped to variables with the prefix 'enable_', e.g.
 # enable_filevault
-flags=( filevault )
+flags=(
+    filevault
+    nolink
+    noinstall
+)
 
 # Available commands; corresponding command function is prefixed with
 # 'cmd_', e.g. cmd_help

@@ -1,5 +1,18 @@
 formulae=(
     java
+    atom
+    caffeine
+    dropbox
+    intellij-idea-ce
+    onyx
+    superduper
+    bittorrent-sync
+    clipmenu
+    hex-fiend
+    iterm2
+    menumeters
+    owncloud
+    eclipse-java
 )
 
 brew cask install --appdir=/Applications ${formulae[@]}

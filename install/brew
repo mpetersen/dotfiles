@@ -7,16 +7,12 @@ formulae=(
     maven
     mongodb
     plantuml
-    rdate
     wget
-    cowsay
     gnupg
     graphviz
     libpng
     mercurial
     openssl
-    postgresql
-    readline
     tree
     bash-git-prompt
     bash-completion
