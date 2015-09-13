@@ -1,20 +1,20 @@
 formulae=(
-    java
     atom
-    caffeine
-    dropbox
-    intellij-idea-ce
-    onyx
-    superduper
     bittorrent-sync
+    caffeine
     clipmenu
-    hex-fiend
-    iterm2
-    menumeters
-    owncloud
+    dropbox
     eclipse-java
     evernote
+    hex-fiend
+    intellij-idea-ce
+    iterm2
+    java
     keepassx
+    menumeters
+    onyx
+    owncloud
+    superduper
 )
 
 brew cask install --appdir=/Applications ${formulae[@]}
@@ -23,11 +23,10 @@ brew cask install --appdir=/Applications ${formulae[@]}
 apps=(
     "Bittorrent Sync"
     "Caffeine"
-    "Dropbox"
     "ClipMenu"
-    "owncloud"
-    "MenuMeters"
+    "Dropbox"
     "KeePassX"
+    "owncloud"
 )
 
 for app in "${apps[@]}"; do
@@ -40,5 +39,5 @@ pref_panes=(
 )
 
 for pref_pane in "${pref_panes[@]}"; do
-    open "~/Library/PreferencePanes/$pref_pane.prefPane"
+    open ~/Library/PreferencePanes/$pref_pane.prefPane
 done

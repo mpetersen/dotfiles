@@ -114,8 +114,8 @@ function cmd_unlink {
 # enable_filevault
 flags=(
     filevault
-    nolink
     noinstall
+    nolink
 )
 
 # Available commands; corresponding command function is prefixed with

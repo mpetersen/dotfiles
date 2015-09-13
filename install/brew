@@ -4,21 +4,21 @@ brew update
 brew upgrade
 
 formulae=(
-    dockutil
-    go
-    lftp
-    maven
-    mongodb
-    plantuml
-    wget
-    gnupg
-    graphviz
-    libpng
-    mercurial
-    openssl
-    tree
-    bash-git-prompt
     bash-completion
+    bash-git-prompt
+    dockutil
+    gnupg
+    go
+    graphviz
+    lftp
+    libpng
+    maven
+    mercurial
+    mongodb
+    openssl
+    plantuml
+    tree
+    wget
 )
 
 brew install ${formulae[@]}

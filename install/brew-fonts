@@ -6,4 +6,6 @@ formulae=(
     source-sans-pro
 )
 
-brew cask install font-${formulae[@]}
+for formula in "${formulae[@]}"; do
+    brew cask install font-$formula
+done
