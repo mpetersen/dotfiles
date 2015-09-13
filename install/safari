@@ -5,8 +5,14 @@
 extensions=(
     http://www.instapaper.com/static/files/instapaper.safariextz
     https://www.ghostery.com/safari/Ghostery.safariextz
+    https://github.com/hoyois/clicktoplugin/releases/download/v3.1.6/ClickToPlugin.safariextz
 )
 
+local ext_dir="~/Library/Safari/Extensions"
+
+mkdir -p $ext_dir
+cd $ext_dir
+
 for extension in "${extensions[@]}"; do
-    curl -L -o ~/Downloads/plugin.safariextz $extension && open ~/Downloads/plugin.safariextz
+    curl -LO $extension
 done
