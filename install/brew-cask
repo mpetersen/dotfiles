@@ -20,13 +20,14 @@ brew cask install --appdir=/Applications ${formulae[@]}
 
 # Launch some apps
 apps=(
+    "Bittorrent Sync"
     "Caffeine"
     "Dropbox"
-    "Clipmenu"
+    "ClipMenu"
     "owncloud"
     "MenuMeters"
 )
 
 for app in "${apps[@]}"; do
-    open -a "/Applications/$app"
+    open -a "/Applications/$app.app"
 done
