@@ -1,0 +1,8 @@
+formulae=(
+    open-sans
+    open-sans-condensed
+    source-code-pro
+    source-sans-pro
+)
+
+brew cask install ${formulae[@]}
