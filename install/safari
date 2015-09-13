@@ -8,11 +8,11 @@ extensions=(
     https://github.com/hoyois/clicktoplugin/releases/download/v3.1.6/ClickToPlugin.safariextz
 )
 
-ext_dir="~/Library/Safari/Extensions"
+ext_dir=~/Library/Safari/Extensions
 
 mkdir -p $ext_dir
 cd $ext_dir
 
 for extension in "${extensions[@]}"; do
-    curl -LO $extension
+    curl -LOs $extension
 done
