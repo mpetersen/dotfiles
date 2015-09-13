@@ -1,3 +1,12 @@
 # Install Safari plugins
 #
 # E.g. like this: curl -L -o ~/Downloads/plugin.safariextz https://www.ghostery.com/safari/Ghostery.safariextz && open ~/Downloads/plugin.safariextz
+
+extensions=(
+    http://www.instapaper.com/static/files/instapaper.safariextz
+    https://www.ghostery.com/safari/Ghostery.safariextz
+)
+
+for extension in "${extensions[@]}"; do
+    curl -L -o ~/Downloads/plugin.safariextz $extension && open ~/Downloads/plugin.safariextz
+done

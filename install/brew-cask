@@ -1,20 +1,44 @@
 formulae=(
+    adobe-creative-cloud
     atom
     bittorrent-sync
+    burn
     caffeine
+    cinch
+    citrix-receiver
+    clamxav
     clipmenu
     dropbox
+    duet
     eclipse-java
     evernote
+    firefox
+    garagesale
+    google-chrome
+    handbrake
     hex-fiend
     intellij-idea-ce
     iterm2
     java
     keepassx
+    kindle
+    libreoffice
+    mediathekview
     menumeters
     onyx
     owncloud
+    sourcetree
+    spotify
+    steam
     superduper
+    teamviewer
+    things
+    transmission
+    virtualbox
+    vlc
+    wacom-tablet
+    xld
+    xmind
 )
 
 brew cask install --appdir=/Applications ${formulae[@]}
@@ -31,6 +55,7 @@ apps=(
     "Dropbox"
     "KeePassX"
     "owncloud"
+    "Cinch"
 )
 
 for app in "${apps[@]}"; do
