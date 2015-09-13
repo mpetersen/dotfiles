@@ -14,6 +14,7 @@ formulae=(
     owncloud
     eclipse-java
     evernote
+    keepassx
 )
 
 brew cask install --appdir=/Applications ${formulae[@]}
@@ -26,8 +27,18 @@ apps=(
     "ClipMenu"
     "owncloud"
     "MenuMeters"
+    "KeePassX"
 )
 
 for app in "${apps[@]}"; do
     open -a "/Applications/$app.app"
+done
+
+# Launch some preference panes
+pref_panes=(
+    "MenuMeters"
+)
+
+for pref_pane in "${pref_panes[@]}"; do
+    open "~/Library/PreferencePanes/$pref_pane.prefPane"
 done
