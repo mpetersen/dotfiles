@@ -76,10 +76,6 @@ function cmd_update {
     log "Update App Store software"
     softwareupdate -ia
 
-    log "Update brew formulae"
-    brew update
-    brew upgrade
-
     if [ !$enable_noinstall ]; then
         # Install
         local installers=(
