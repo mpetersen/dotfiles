@@ -1,0 +1,3 @@
+# Install Safari plugins
+#
+# E.g. like this: curl -L -o ~/Downloads/plugin.safariextz https://www.ghostery.com/safari/Ghostery.safariextz && open ~/Downloads/plugin.safariextz
