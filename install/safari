@@ -2,17 +2,8 @@
 #
 # E.g. like this: curl -L -o ~/Downloads/plugin.safariextz https://www.ghostery.com/safari/Ghostery.safariextz && open ~/Downloads/plugin.safariextz
 
-extensions=(
-    http://www.instapaper.com/static/files/instapaper.safariextz
-    https://www.ghostery.com/safari/Ghostery.safariextz
-    https://github.com/hoyois/clicktoplugin/releases/download/v3.1.6/ClickToPlugin.safariextz
-)
+cd ~/Downloads
 
-ext_dir=~/Library/Safari/Extensions
-
-mkdir -p $ext_dir
-cd $ext_dir
-
-for extension in "${extensions[@]}"; do
-    curl -LOs $extension
-done
+curl -LOs http://www.instapaper.com/static/files/instapaper.safariextz && open instapaper.safariextz
+curl -LOs https://www.ghostery.com/safari/Ghostery.safariextz && open Ghostery.safariextz
+curl -LOs https://github.com/hoyois/clicktoplugin/releases/download/v3.1.6/ClickToPlugin.safariextz && open ClickToPlugin.safariextz
