@@ -13,6 +13,20 @@ formulae=(
     menumeters
     owncloud
     eclipse-java
+    evernote
 )
 
 brew cask install --appdir=/Applications ${formulae[@]}
+
+# Launch some apps
+apps=(
+    "Caffeine"
+    "Dropbox"
+    "Clipmenu"
+    "owncloud"
+    "MenuMeters"
+)
+
+for app in "${apps[@]}"; do
+    open -a "/Applications/$app"
+done
