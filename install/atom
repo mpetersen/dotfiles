@@ -1,0 +1,11 @@
+formulae=(
+    atom-beautify
+    go-plus
+    graphviz-preview
+    highlight-selected
+    language-plantuml
+    markdown-format
+    plantuml-viewer
+)
+
+brew cask install ${formulae[@]}
