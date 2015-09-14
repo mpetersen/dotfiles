@@ -8,6 +8,7 @@ urls=(
     http://www.instapaper.com/static/files/instapaper.safariextz
     https://www.ghostery.com/safari/Ghostery.safariextz
     https://github.com/hoyois/clicktoplugin/releases/download/v3.1.6/ClickToPlugin.safariextz
+    https://update.adblockplus.org/latest/adblockplussafari.safariextz
 )
 
 for url in "${urls[@]}"; do
