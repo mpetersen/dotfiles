@@ -11,12 +11,7 @@ urls=(
 )
 
 for url in "${urls[@]}"; do
-    name=${url##/*/}
+    name=${url##*/}
     curl -LO $url
     open $name
 done
-
-
-#curl -LOs http://www.instapaper.com/static/files/instapaper.safariextz && open instapaper.safariextz
-#curl -LOs https://www.ghostery.com/safari/Ghostery.safariextz && open Ghostery.safariextz
-#curl -LOs https://github.com/hoyois/clicktoplugin/releases/download/v3.1.6/ClickToPlugin.safariextz && open ClickToPlugin.safariextz
