@@ -12,8 +12,8 @@ urls=(
 
 for url in "${urls[@]}"; do
     name=${url##/*/}
-    curl -LO url
-    open name
+    curl -LO $url
+    open $name
 done
 
 
