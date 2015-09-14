@@ -1,0 +1,17 @@
+formulae=(
+    bittorrent-sync
+    burn
+    garagesale
+    handbrake
+    kindle
+    duet
+    mediathekview
+    steam
+    things
+    transmission
+    vlc
+    wacom-tablet
+    xld
+)
+
+brew cask install --appdir=/Applications ${formulae[@]}

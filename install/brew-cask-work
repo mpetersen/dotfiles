@@ -1,0 +1,7 @@
+formulae=(
+    citrix-receiver
+    firefox
+    google-chrome
+)
+
+brew cask install --appdir=/Applications ${formulae[@]}

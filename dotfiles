@@ -27,6 +27,8 @@ Available flags are:
                 command
   --noinstall   Disables installer execution in combination with the
                 update commnand
+  --home        Installs applications for home use
+  --work        Installs applications for work use
 
 Available commands are:
   help          Prints this help text
@@ -72,8 +74,16 @@ function cmd_setup {
     cmd_update
 }
 
+function install {
+    log "Execute $1 installer"
+    $base_dir/install/$1
+}
+
 function cmd_update {
-    if [ !$enable_noinstall ]; then
+    cd $base_dir
+    git pull
+
+    if [ ! $enable_noinstall ]; then
         log "Update App Store software"
         softwareupdate -ia
 
@@ -90,12 +100,19 @@ function cmd_update {
         )
 
         for installer in "${installers[@]}"; do
-            log "Execute $installer installer"
-            $base_dir/install/$installer
+            install $installer
         done
+
+        if [ $enable_home ]; then
+            install brew-cask-home
+        fi
+
+        if [ $enable_work ]; then
+            install brew-cask-work
+        fi
     fi
 
-    if [ !$enable_nolink ]; then
+    if [ ! $enable_nolink ]; then
         log "Link dotfiles"
         for dotfile in $( $base_dir/repo ); do
             ln -s ~/.$dotfile $base_dir/repo/$dotfile
@@ -114,8 +131,10 @@ function cmd_unlink {
 # enable_filevault
 flags=(
     filevault
+    home
     noinstall
     nolink
+    work
 )
 
 # Available commands; corresponding command function is prefixed with
