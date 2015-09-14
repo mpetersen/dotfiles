@@ -13,6 +13,8 @@ urls=(
 
 for url in "${urls[@]}"; do
     name=${url##*/}
-    curl -LO $url
-    open $name
+    if [ ! -e ~/Library/Safari/Extensions/$name ]; then
+        curl -LO $url
+        open $name
+    fi
 done
