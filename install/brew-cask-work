@@ -2,6 +2,7 @@ formulae=(
     citrix-receiver
     firefox
     google-chrome
+    slack
 )
 
 brew cask install --appdir=/Applications ${formulae[@]}

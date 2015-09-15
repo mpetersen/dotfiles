@@ -1,1 +1,23 @@
 # Setup the Dock
+
+dockutil --remove all
+
+apps=(
+    '/System/Library/CoreServices/Network Diagnostics.app'
+    '/Applications/Utilities/Console.app'
+    '/Applications/iTerm.app'
+    '/Applications/Contacts.app'
+    '/Applications/Mail.app'
+    '/Applications/Messages.app'
+    '/Applications/Safari.app'
+    '/Applications/Calendar.app'
+    '/Applications/iTunes.app'
+)
+
+for app in "${apps[@]}"; do
+    dockutil --add $app
+done
+
+dockutil --add '/Applications' --view grid --display folder --sort name
+dockutil --add '~/Downloads' --view grid --display folder --sort dateadded
+dockutil --add '~' --view grid --display stack --sort kind
