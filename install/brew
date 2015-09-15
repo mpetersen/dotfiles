@@ -5,7 +5,7 @@ brew upgrade
 
 # Java is required by some formulae (e.g. maven), so it is installed explicitly
 # here.
-brew cask install java
+brew cask install --appdir=/Applications java
 
 formulae=(
     bash-completion

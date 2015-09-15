@@ -1,3 +1,5 @@
+brew cask install --appdir=/Applications atom
+
 apm upgrade --no-confirm
 
 packages=(
