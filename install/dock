@@ -6,6 +6,7 @@ apps=(
     "/System/Library/CoreServices/Network Diagnostics.app"
     "/Applications/Utilities/Console.app"
     "/Applications/iTerm.app"
+    "/Applications/KeePassX.app"
     "/Applications/Contacts.app"
     "/Applications/Mail.app"
     "/Applications/Messages.app"
