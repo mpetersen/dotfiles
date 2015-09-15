@@ -1,6 +1,6 @@
 # Setup the Dock
 
-dockutil --remove all
+dockutil --remove all --no-restart
 
 apps=(
     "/System/Library/CoreServices/Network Diagnostics.app"
