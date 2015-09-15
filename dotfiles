@@ -87,6 +87,7 @@ function install {
 }
 
 function cmd_update {
+    log "Update from GitHub"
     cd $base_dir
     git pull
 
@@ -95,10 +96,11 @@ function cmd_update {
         softwareupdate -ia
 
         if [ ! $enable_noapps ]; then
+            log "Install apps"
             install brew-cask
         fi
 
-        # Install
+        log "Run installers"
         local installers=(
             brew
             brew-fonts
@@ -108,16 +110,17 @@ function cmd_update {
             dock
             osx-defaults
         )
-
         for installer in "${installers[@]}"; do
             install $installer
         done
 
         if [ $enable_home ]; then
+            log "Install home apps"
             install brew-cask-home
         fi
 
         if [ $enable_work ]; then
+            log "Install work apps"
             install brew-cask-work
         fi
     fi
@@ -129,6 +132,7 @@ function cmd_update {
         done
     fi
 
+    log "Update bash profile"
     source ~/.bash_profile
 }
 
