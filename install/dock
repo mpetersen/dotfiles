@@ -15,9 +15,11 @@ apps=(
 )
 
 for app in "${apps[@]}"; do
-    dockutil --add "$app"
+    dockutil --add "$app" --no-restart
 done
 
-dockutil --add '/Applications' --view grid --display folder --sort name
-dockutil --add '~/Downloads' --view grid --display folder --sort dateadded
-dockutil --add '~' --view grid --display stack --sort kind
+dockutil --add '/Applications' --view grid --display folder --sort name --no-restart
+dockutil --add '~/Downloads' --view grid --display folder --sort dateadded --no-restart
+dockutil --add '~' --view grid --display stack --sort kind --no-restart
+
+killall Dock
