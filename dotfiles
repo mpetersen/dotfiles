@@ -124,7 +124,7 @@ function cmd_update {
             install brew-cask-work
         fi
 
-        log "Cleanup"
+        log "Cleanup brew cellar and caskroom"
         brew cleanup
         brew cask cleanup
     fi
