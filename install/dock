@@ -15,7 +15,7 @@ apps=(
 )
 
 for app in "${apps[@]}"; do
-    dockutil --add $app
+    dockutil --add "$app"
 done
 
 dockutil --add '/Applications' --view grid --display folder --sort name
