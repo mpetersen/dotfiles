@@ -18,23 +18,28 @@ function cmd_help {
     cat << EOF
 dotfiles organizes your Mac OS X dotfiles
 
-usage: dotfiles [<flag>] <command>
+usage: dotfiles <command> [<flag>]
 
 Available flags are:
-  --filevault   Enables FileVault when used in combination with the setup
-                command (${bold}experimental!${normal})
-  --nolink      Disables dotfiles linking in combination with the update
-                command
-  --noinstall   Disables installer execution in combination with the
-                update commnand
-  --home        Installs applications for home use
-  --work        Installs applications for work use
 
 Available commands are:
   help          Prints this help text
+
   setup         Sets up dotfiles and the environment on the current system.
-                This should be usually called only once
+                This should be usually called only once, but can be called many
+                times without issue. This command also includes the update
+                command.
+                Flags:
+                --filevault     Enables FileVault (${bold}experimental!${normal})
+
   update        Updates the dotfiles and the environment setup
+                Flags:
+                --nolink        Disables dotfiles linking (i.e. does not update
+                                links to dotfiles)
+                --noinstall     Disables installer execution
+                --home          Installs applications for home use
+                --work          Installs applications for work use
+
   unlink        Unlinks the dotfiles so you can safely remove the .dotfiles
                 repository
 
