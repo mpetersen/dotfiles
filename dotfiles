@@ -37,6 +37,8 @@ Available commands are:
                 --nolink        Disables dotfiles linking (i.e. does not update
                                 links to dotfiles)
                 --noinstall     Disables installer execution
+                --noapps        Runs the installers, but does not install any
+                                apps
                 --home          Installs applications for home use
                 --work          Installs applications for work use
 
@@ -92,9 +94,12 @@ function cmd_update {
         log "Update App Store software"
         softwareupdate -ia
 
+        if [ ! $enable_noapps ]; then
+            install brew-cask
+        fi
+
         # Install
         local installers=(
-            brew-cask
             brew
             brew-fonts
             atom
@@ -137,6 +142,7 @@ function cmd_unlink {
 flags=(
     filevault
     home
+    noapps
     noinstall
     nolink
     work
