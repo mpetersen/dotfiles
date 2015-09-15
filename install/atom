@@ -1,4 +1,4 @@
-apm update
+apm upgrade --no-confirm
 
 packages=(
     atom-beautify
