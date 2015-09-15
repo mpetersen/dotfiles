@@ -123,6 +123,10 @@ function cmd_update {
             log "Install work apps"
             install brew-cask-work
         fi
+
+        log "Cleanup"
+        brew cleanup
+        brew cask cleanup
     fi
 
     if [ ! $enable_nolink ]; then
