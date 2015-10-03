@@ -95,11 +95,6 @@ function cmd_update {
         log "Update App Store software"
         softwareupdate -ia
 
-        if [ ! $enable_noapps ]; then
-            log "Install apps"
-            install brew-cask
-        fi
-
         log "Run installers"
         local installers=(
             brew
@@ -113,6 +108,11 @@ function cmd_update {
         for installer in "${installers[@]}"; do
             install $installer
         done
+
+        if [ ! $enable_noapps ]; then
+            log "Install apps"
+            install brew-cask
+        fi
 
         if [ $enable_home ]; then
             log "Install home apps"
