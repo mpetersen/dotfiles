@@ -14,11 +14,12 @@ formulae=(
     istat-menus
     dwihn0r-keepassx
     libreoffice
-    onyx
+#    onyx
     owncloud
     sourcetree
     spotify
     superduper
+    sqlitebrowser
     virtualbox
     xmind
 )

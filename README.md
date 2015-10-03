@@ -1,8 +1,10 @@
-# dotfiles
+dotfiles
+========
 
 My dotfiles repository.
 
-## Installation
+Installation
+------------
 
 To install the dotfiles repository, execute the following command in the terminal:
 
@@ -14,7 +16,8 @@ If you are executing this command on a new Mac, `git` might not be installed yet
 
 After installing the developer tools, execute the above command again and the dotfiles repository will be installed at `.dotfiles` in your home directory.
 
-## First setup
+First setup
+-----------
 
 In the `.dotfiles` repository folder you find a tool to manage the dotfiles: `dotfiles`:
 
@@ -28,7 +31,13 @@ If you wish to enable FileVault, you can use this:
 ~/.dotfiles/dotfiles --filevault setup
 ```
 
-## Testing
+Handling confidential information
+---------------------------------
+
+Store confidential information in `~/.exports_private`.
+
+Testing
+-------
 
 If you want to test the dotfiles tool on a clean Mac, there is no need to wipe your machine. Instead, you can install a clean system on VirtualBox. Follow [this link to setup OS X on VirtualBox](https://ntk.me/2012/09/07/os-x-on-os-x/).
 
