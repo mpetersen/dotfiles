@@ -1,12 +1,13 @@
 formulae=(
     bittorrent-sync
     burn
+    duet
     garagesale
     handbrake
     kindle
-    duet
     mediathekview
     steam
+    textwrangler
     things
     transmission
     vlc

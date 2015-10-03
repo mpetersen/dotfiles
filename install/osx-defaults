@@ -1,5 +1,7 @@
 # Sets various Mac OS X default parameters
 
+sudo defaults write com.apple.AppleMultitouchMouse MouseButtonMode -string "TwoButton"
+
 # From: https://github.com/mathiasbynens/dotfiles/blob/master/.osx
 
 ###############################################################################

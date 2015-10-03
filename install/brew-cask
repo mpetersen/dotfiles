@@ -11,6 +11,7 @@ formulae=(
     hex-fiend
     intellij-idea-ce
     iterm2
+    istat-menus
     dwihn0r-keepassx
     libreoffice
     onyx
@@ -33,7 +34,7 @@ qlplugins=(
     quicklook-csv
     betterzipql
     webpquicklook
-    suspicious-package
+#    suspicious-package
 )
 brew cask install ${qlplugins[@]}
 qlmanage -r
@@ -42,11 +43,12 @@ qlmanage -r
 # Launch some apps
 apps=(
     "Caffeine"
+    "Cinch"
     "ClipMenu"
     "Dropbox"
+    "iStat Menus"
     "KeePassX"
     "owncloud"
-    "Cinch"
 )
 for app in "${apps[@]}"; do
     open -a "/Applications/$app.app"

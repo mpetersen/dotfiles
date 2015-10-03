@@ -10,6 +10,7 @@ packages=(
     language-plantuml
     markdown-format
     plantuml-viewer
+    sort-lines
 )
 
 for package in "${packages[@]}"; do
