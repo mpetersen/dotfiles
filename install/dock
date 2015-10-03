@@ -1,6 +1,6 @@
 # Setup the Dock
 
-brew install dockutil
+# brew install dockutil
 
 dockutil --remove all --no-restart
 
@@ -22,7 +22,7 @@ for app in "${apps[@]}"; do
 done
 
 dockutil --add '/Applications' --view grid --display folder --sort name --no-restart
-dockutil --add '~/Downloads' --view grid --display folder --sort dateadded --no-restart
+dockutil --add '~/Downloads' --view grid --display stack --sort dateadded --no-restart
 dockutil --add '~' --view grid --display stack --sort kind --no-restart
 
 killall Dock
