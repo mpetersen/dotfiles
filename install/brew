@@ -10,7 +10,6 @@ brew cask install --appdir=/Applications java
 formulae=(
     bash-completion
     bash-git-prompt
-    dockutil
     gnupg
     go
     graphviz

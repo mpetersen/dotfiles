@@ -1,5 +1,7 @@
 # Setup the Dock
 
+brew install dockutil
+
 dockutil --remove all --no-restart
 
 apps=(

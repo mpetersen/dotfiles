@@ -13,7 +13,6 @@ formulae=(
     iterm2
     dwihn0r-keepassx
     libreoffice
-    menumeters
     onyx
     owncloud
     sourcetree
@@ -22,16 +21,26 @@ formulae=(
     virtualbox
     xmind
 )
-
 brew cask install --appdir=/Applications ${formulae[@]}
 
 # Install QuickLook plugins
-brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv betterzipql webp-quicklook suspicious-package && qlmanage -r
+qlplugins=(
+    qlcolorcode
+    qlstephen
+    qlmarkdown
+    quicklook-json
+    qlprettypatch
+    quicklook-csv
+    betterzipql
+    webpquicklook
+    suspicious-package
+)
+brew cask install ${qlplugins[@]}
+qlmanage -r
 
 
 # Launch some apps
 apps=(
-    "Bittorrent Sync"
     "Caffeine"
     "ClipMenu"
     "Dropbox"
@@ -39,16 +48,6 @@ apps=(
     "owncloud"
     "Cinch"
 )
-
 for app in "${apps[@]}"; do
     open -a "/Applications/$app.app"
-done
-
-# Launch some preference panes
-pref_panes=(
-    "MenuMeters"
-)
-
-for pref_pane in "${pref_panes[@]}"; do
-    open ~/Library/PreferencePanes/$pref_pane.prefPane
 done
