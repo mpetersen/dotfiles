@@ -133,13 +133,13 @@ function cmd_update {
         log "Link dotfiles"
         for dotfile in $base_dir/repo/* ; do
             name=$(basename "$dotfile")
-            ln -sv $base_dir/repo/$name ~/.$name
+            [ ! -s ~/.$name ] && ln -sv $base_dir/repo/$name ~/.$name
         done
     fi
 
     log "Setup cloud folders"
     cloudfolders=(
-        "Box"
+        "Box Sync"
         "Creative Cloud Files"
         "Dropbox"
         "OneDrive"
@@ -149,6 +149,7 @@ function cmd_update {
         dir=~/.cloudfiles/$cloudfolder
         [ ! -d $dir ] && mkdir -pv $dir
     done
+
 }
 
 function cmd_unlink {
