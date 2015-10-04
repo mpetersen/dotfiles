@@ -103,7 +103,7 @@ function cmd_update {
             safari
             node
             dock
-            osx-defaults
+#            osx-defaults
         )
         for installer in "${installers[@]}"; do
             install $installer
@@ -136,6 +136,19 @@ function cmd_update {
             ln -sv $base_dir/repo/$name ~/.$name
         done
     fi
+
+    log "Setup cloud folders"
+    cloudfolders=(
+        "Box"
+        "Creative Cloud Files"
+        "Dropbox"
+        "OneDrive"
+        "ownCloud"
+    )
+    for cloudfolder in "${cloudfolders[@]}"; do
+        dir=~/.cloudfiles/$cloudfolder
+        [ ! -d $dir ] && mkdir -pv $dir
+    done
 }
 
 function cmd_unlink {
