@@ -26,4 +26,7 @@ formulae=(
     wget
 )
 
-brew install ${formulae[@]}
+for formula in "${formulae[@]}"; do
+    brew install $formula
+done
+

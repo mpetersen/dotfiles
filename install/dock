@@ -1,6 +1,6 @@
 # Setup the Dock
 
-# brew install dockutil
+brew install https://github.com/keith/homebrew/raw/ks-dockutil/Library/Formula/dockutil.rb
 
 dockutil --remove all --no-restart
 
