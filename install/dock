@@ -23,6 +23,6 @@ done
 
 dockutil --add '/Applications' --view grid --display folder --sort name --no-restart
 dockutil --add '~/Downloads' --view grid --display stack --sort dateadded --no-restart
-dockutil --add '~' --view grid --display stack --sort kind --no-restart
+dockutil --add '~' --view grid --display folder --sort kind --no-restart
 
 killall Dock

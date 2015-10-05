@@ -10,7 +10,7 @@ defaults write "Apple Global Domain" NSAutomaticDashSubstitutionEnabled -int 0
 defaults write "Apple Global Domain" NSAutomaticQuoteSubstitutionEnabled -int 0
 defaults write "Apple Global Domain" NSAutomaticSpellingCorrectionEnabled -int 0
 defaults write "Apple Global Domain" WebAutomaticSpellingCorrectionEnabled -int 0
-defaults write "Apple Global Domain" "com.apple.springing.delay" -int 100
+defaults write "Apple Global Domain" "com.apple.springing.enabled" -int 0
 defaults write "Apple Global Domain" "com.apple.mouse.scaling" -int 2
 defaults write "Apple Global Domain" "com.apple.trackpad.scaling" -int 2
 defaults write "com.apple.AppleMultitouchMouse" MouseButtonMode -string "TwoButton"

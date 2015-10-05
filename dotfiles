@@ -53,6 +53,8 @@ EOF
 }
 
 function cmd_setup {
+    [ ! -f ~/defaults.orig ] && defaults read > ~/defaults.orig
+
     if [ $enable_filevault ]; then
         log "Enable FileVault - WARNING: experimental!"
         sudo fdesetup enable -verbose -user `whoami`
@@ -146,10 +148,9 @@ function cmd_update {
         "ownCloud"
     )
     for cloudfolder in "${cloudfolders[@]}"; do
-        dir=~/.cloudfiles/$cloudfolder
+        dir=~/Clouds/$cloudfolder
         [ ! -d $dir ] && mkdir -pv $dir
     done
-
 }
 
 function cmd_unlink {

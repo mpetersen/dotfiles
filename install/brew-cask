@@ -14,16 +14,20 @@ formulae=(
     istat-menus
     dwihn0r-keepassx
     libreoffice
-#    onyx
+    onyx
     owncloud
     sourcetree
+    p4merge
     spotify
     superduper
     sqlitebrowser
     virtualbox
     xmind
 )
-brew cask install --appdir=/Applications ${formulae[@]}
+for formula in "${formulae[@]}"; do
+    brew cask install --appdir=/Applications $formula
+done
+
 
 # Install QuickLook plugins
 qlplugins=(

@@ -14,5 +14,6 @@ formulae=(
     wacom-tablet
     xld
 )
-
-brew cask install --appdir=/Applications ${formulae[@]}
+for formula in "${formulae[@]}"; do
+    brew cask install --appdir=/Applications $formula
+done
