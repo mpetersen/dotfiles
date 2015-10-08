@@ -44,6 +44,8 @@ Available commands are:
 
   unlink        Unlinks the dotfiles so you can safely remove the .dotfiles
                 repository
+  cloud         Sets up the cloud directories and updates links to the
+                Documents, Movies, Music and Pictures directories.
 
 
 Copyright 2015 by Moritz Petersen
@@ -139,7 +141,12 @@ function cmd_update {
         done
     fi
 
+    cmd_cloud
+}
+
+function cmd_cloud {
     log "Setup cloud folders"
+    log "(run this command again when syncing is completed: dotfiles cloud)"
     cloudfolders=(
         "Box Sync"
         "Creative Cloud Files"
@@ -147,9 +154,35 @@ function cmd_update {
         "OneDrive"
         "ownCloud"
     )
-    for cloudfolder in "${cloudfolders[@]}"; do
-        dir=~/Clouds/$cloudfolder
-        [ ! -d $dir ] && mkdir -pv $dir
+    basefolders=(
+        "Documents"
+        "Movies"
+        "Music"
+        "Pictures"
+    )
+
+    log "Cleanup existing links"
+    for b in "${basefolders[@]}" ; do
+        for l in ~/"$b"/* ; do
+            if [ -s "$l" ]; then
+                t=$(readlink "$l")
+                if [[ $t == /Users/*/Clouds/* ]]; then
+                    echo "Removing $l -> $t"
+                    unlink "$l"
+                fi
+            fi
+        done
+    done
+
+    log "Creating new links"
+    for c in "${cloudfolders[@]}" ; do
+        for b in "${basefolders[@]}" ; do
+            for d in ~/Clouds/"$c"/"$b"/* ; do
+                n=$(basename "$d")
+                t=~/"$b"/"$n"
+                [ -d "$d" ] && [ ! -s "$t" ] && ln -sv "$d" "$t"
+            done
+        done
     done
 }
 
@@ -171,7 +204,7 @@ flags=(
 
 # Available commands; corresponding command function is prefixed with
 # 'cmd_', e.g. cmd_help
-commands=( help setup update unlink )
+commands=( help setup update unlink cloud )
 
 log "Default command is 'help'"
 command=help
