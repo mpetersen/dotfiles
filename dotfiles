@@ -228,3 +228,5 @@ fi
 
 log "Execute $command command"
 cmd_$command
+
+exit 0
