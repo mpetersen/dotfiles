@@ -147,6 +147,7 @@ function cmd_update {
 function cmd_cloud {
     log "Setup cloud folders"
     log "(run this command again when syncing is completed: dotfiles cloud)"
+    cloudbase=~/Clouds
     cloudfolders=(
         "Box Sync"
         "Creative Cloud Files"
@@ -160,6 +161,11 @@ function cmd_cloud {
         "Music"
         "Pictures"
     )
+
+    log "Creating cloud folders"
+    for c in "${cloudfolders[@]}" ; do
+        mkdir -vp $cloudbase/"$c"
+    done
 
     log "Cleanup existing links"
     for b in "${basefolders[@]}" ; do
@@ -177,7 +183,7 @@ function cmd_cloud {
     log "Creating new links"
     for c in "${cloudfolders[@]}" ; do
         for b in "${basefolders[@]}" ; do
-            for d in ~/Clouds/"$c"/"$b"/* ; do
+            for d in $cloudbase/"$c"/"$b"/* ; do
                 n=$(basename "$d")
                 t=~/"$b"/"$n"
                 [ -d "$d" ] && [ ! -s "$t" ] && ln -sv "$d" "$t ($c)"
