@@ -166,8 +166,9 @@ function cmd_cloud {
         for l in ~/"$b"/* ; do
             if [ -s "$l" ]; then
                 t=$(readlink "$l")
-                if [[ $t == /Users/*/Clouds/* ]]; then
-                    echo "Removing $l -> $t"
+                n=$(basename "$l")
+                if [[ $t == /Users/*/Clouds/* ]] || [ "$t" == "$n" ]; then
+                    echo "Removing $l"
                     unlink "$l"
                 fi
             fi
