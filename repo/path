@@ -1,6 +1,6 @@
 paths=(
     /usr/local/opt/go/libexec/bin
-    $HOME/bin
+    $HOME/Dev/bin
 )
 for path in "${paths[@]}"; do
     export PATH=$PATH:$path

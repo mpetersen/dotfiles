@@ -1,5 +1,15 @@
 *~
 .DS_Store
-target/
-.idea
+deployment.properties
+target
 *.iml
+.idea
+.settings
+.project
+.classpath
+.checkstyle
+*.jar
+*.war
+*.ear
+*.class
+**/*.fbIncludeFilterFile

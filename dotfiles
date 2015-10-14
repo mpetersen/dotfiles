@@ -141,6 +141,8 @@ function cmd_update {
         done
     fi
 
+    [ -e ~/.exports_private ] || touch ~/.exports_private
+
     cmd_cloud
 }
 
@@ -208,7 +210,13 @@ flags=(
 
 # Available commands; corresponding command function is prefixed with
 # 'cmd_', e.g. cmd_help
-commands=( help setup update unlink cloud )
+commands=(
+    help
+    setup
+    update
+    unlink
+    cloud
+)
 
 log "Default command is 'help'"
 command=help
