@@ -1,6 +1,6 @@
 [user]
 	name = Moritz Petersen
-	email = git@moritzpetersen.de
+	email = mpeterse@adobe.com
 [core]
 	excludesfile = /Users/moritz/.gitignore_global
 [difftool "sourcetree"]
