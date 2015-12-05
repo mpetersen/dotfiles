@@ -81,6 +81,9 @@ function cmd_setup {
     log "Install Homebrew Completions"
     brew tap homebrew/completions
 
+    log "Install Homebrew Dupes"
+    brew tap homebrew/dupes
+
     log "Execute update command"
     cmd_update
 }

@@ -13,6 +13,7 @@ formulae=(
     docker
     docker-compose
     docker-machine
+    gdb # see also: http://ntraft.com/installing-gdb-on-os-x-mavericks/
     gnupg
     go
     graphviz
