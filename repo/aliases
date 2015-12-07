@@ -3,6 +3,9 @@ alias mvnsci="mvn -DskipTests -DskipTessa -Dfindbugs.skip=true -Dcheckstyle.skip
 alias mvnci="mvn clean install"
 # ------------------------------------------------------------------------------
 
+# make directory and change into it
+mkcd() { mkdir -p "$1" && cd "$1"; }
+
 # Easier navigation: .., ..., ...., ....., ~ and -
 alias ..="cd .."
 alias ...="cd ../.."
