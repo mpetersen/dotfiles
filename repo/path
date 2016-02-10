@@ -1,5 +1,6 @@
 paths=(
     $GOROOT/bin
+    $GOPATH/bin
     $HOME/Dev/bin
 )
 

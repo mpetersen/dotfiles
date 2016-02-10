@@ -18,6 +18,7 @@ formulae=(
     go
     graphviz
     lftp
+    libdvdcss
     libpng
     maven
     mercurial
