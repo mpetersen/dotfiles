@@ -29,6 +29,8 @@ formulae=(
     tree
     unrar
     wget
+    rbenv
+    ruby-build
 )
 
 for formula in "${formulae[@]}"; do
