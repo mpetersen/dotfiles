@@ -154,12 +154,12 @@ function cmd_cloud {
     log "(run this command again when syncing is completed: dotfiles cloud)"
     cloudbase=~/Clouds
     cloudfolders=(
-        "Box Sync"
-        "Creative Cloud Files"
+        #"Box Sync"
+        #"Creative Cloud Files"
         "Dropbox"
         "drivesync"
-        "OneDrive"
-        "ownCloud"
+        #"OneDrive"
+        #"ownCloud"
     )
     basefolders=(
         "Documents"
