@@ -7,21 +7,22 @@ formulae=(
     clamxav
     clipmenu
     dropbox
+    dwihn0r-keepassx
     eclipse-java
     evernote
+    firefox
     hex-fiend
     intellij-idea-ce
-    iterm2
     istat-menus
-    dwihn0r-keepassx
+    iterm2
     libreoffice
     onyx
     owncloud
-    sourcetree
     p4merge
+    sourcetree
     spotify
-    superduper
     sqlitebrowser
+    superduper
     virtualbox
     xmind
 )

@@ -10,10 +10,15 @@ brew cask install --appdir=/Applications java
 formulae=(
     bash-completion
     bash-git-prompt
+    docker
+    docker-compose
+    docker-machine
+    gdb # see also: http://ntraft.com/installing-gdb-on-os-x-mavericks/
     gnupg
     go
     graphviz
     lftp
+    libdvdcss
     libpng
     maven
     mercurial
@@ -24,9 +29,10 @@ formulae=(
     tree
     unrar
     wget
+    rbenv
+    ruby-build
 )
 
 for formula in "${formulae[@]}"; do
     brew install $formula
 done
-

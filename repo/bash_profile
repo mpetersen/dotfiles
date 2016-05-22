@@ -4,7 +4,7 @@ export PATH="$HOME/Dev/bin:$PATH";
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
-for file in ~/.{path,exports,exports_private,aliases}; do
+for file in ~/.{exports,exports_private,path,aliases}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 
@@ -19,3 +19,7 @@ if [ -f "$(brew --prefix bash-git-prompt)/share/gitprompt.sh" ]; then
   GIT_PROMPT_THEME=Default
   source "$(brew --prefix bash-git-prompt)/share/gitprompt.sh"
 fi
+
+
+# AWS bash completion
+complete -C aws_completer aws

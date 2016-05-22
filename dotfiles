@@ -81,6 +81,9 @@ function cmd_setup {
     log "Install Homebrew Completions"
     brew tap homebrew/completions
 
+    log "Install Homebrew Dupes"
+    brew tap homebrew/dupes
+
     log "Execute update command"
     cmd_update
 }
@@ -154,6 +157,7 @@ function cmd_cloud {
         "Box Sync"
         "Creative Cloud Files"
         "Dropbox"
+        "drivesync"
         "OneDrive"
         "ownCloud"
     )

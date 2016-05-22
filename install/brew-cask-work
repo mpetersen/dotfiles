@@ -3,6 +3,7 @@ formulae=(
     firefox
     google-chrome
     slack
+    ipass-open-mobile
 )
 for formula in "${formulae[@]}"; do
     brew cask install --appdir=/Applications $formula
