@@ -16,5 +16,5 @@ formulae=(
     xld
 )
 for formula in "${formulae[@]}"; do
-    brew cask install --appdir=/Applications $formula
+    brew cask install --force --appdir=/Applications $formula
 done
