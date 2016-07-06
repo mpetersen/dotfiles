@@ -1,11 +1,6 @@
 formulae=(
     adobe-creative-cloud
     atom
-    boxcryptor
-    caffeine
-    cinch
-    clamxav
-    clipmenu
     dropbox
     dwihn0r-keepassx
     eclipse-java
@@ -17,12 +12,8 @@ formulae=(
     iterm2
     libreoffice
     onyx
-    owncloud
-    p4merge
     sourcetree
     spotify
-    sqlitebrowser
-    superduper
     virtualbox
     xmind
 )
@@ -55,7 +46,6 @@ apps=(
     "Dropbox"
     "iStat Menus"
     "KeePassX"
-    "owncloud"
 )
 for app in "${apps[@]}"; do
     open -a "/Applications/$app.app"

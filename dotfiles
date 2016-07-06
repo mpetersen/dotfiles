@@ -83,9 +83,6 @@ function cmd_setup {
 
     log "Install Homebrew Dupes"
     brew tap homebrew/dupes
-
-    log "Execute update command"
-    cmd_update
 }
 
 function install {

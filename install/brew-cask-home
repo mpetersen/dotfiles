@@ -1,6 +1,5 @@
 formulae=(
     backblaze
-    box-sync
     burn
     duet
     garagesale
@@ -11,10 +10,9 @@ formulae=(
     steam
     textwrangler
     teamviewer
-    things
     transmission
     vlc
-    wacom-tablet
+    wacom-intuos-tablet
     xld
 )
 for formula in "${formulae[@]}"; do
