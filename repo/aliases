@@ -4,6 +4,12 @@ alias mvnci="mvn clean install"
 alias mvncr="mvn clean release:prepare release:perform"
 # ------------------------------------------------------------------------------
 
+# lock screen
+alias lockscreen='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
+
+# sleep
+alias sleep-in='sudo systemsetup -setcomputersleep $1'
+
 # make directory and change into it
 mkcd() { mkdir -p "$1" && cd "$1"; }
 

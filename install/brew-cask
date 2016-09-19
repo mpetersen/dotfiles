@@ -1,29 +1,25 @@
 formulae=(
     adobe-creative-cloud
+    amazon-music
     atom
-    boxcryptor
-    caffeine
-    cinch
-    clamxav
-    clipmenu
+    bbedit
+    docker
     dropbox
-    dwihn0r-keepassx
-    eclipse-java
     evernote
-    firefox
     hex-fiend
+    ichm
     intellij-idea-ce
     istat-menus
     iterm2
+    java
     libreoffice
-    onyx
-    owncloud
-    p4merge
-    sourcetree
+    macpass
+    postman
+    skype
     spotify
-    sqlitebrowser
-    superduper
     virtualbox
+    vlc
+    wireshark
     xmind
 )
 for formula in "${formulae[@]}"; do
