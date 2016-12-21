@@ -1,10 +1,9 @@
 formulae=(
     adobe-creative-cloud
     atom
+    bbedit
     dropbox
-    dwihn0r-keepassx
-    eclipse-java
-    evernote
+    macpass
     firefox
     hex-fiend
     intellij-idea-ce
@@ -16,6 +15,7 @@ formulae=(
     spotify
     virtualbox
     xmind
+    https://raw.githubusercontent.com/m12n/homebrew-cask/f8f7cf8cb918a97fdf5e5fcf9cfeccf99503be7b/Casks/kickmount.rb
 )
 for formula in "${formulae[@]}"; do
     brew cask install --force --appdir=/Applications $formula
