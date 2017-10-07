@@ -13,3 +13,5 @@
 	default = simple
 [merge]
 	tool = p4mergetool
+[credential]
+	helper = osxkeychain
