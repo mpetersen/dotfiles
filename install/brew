@@ -1,53 +1,14 @@
 #!/bin/bash
 
+base_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+
 brew update
 brew upgrade
 
-# Java is required by some formulae (e.g. maven), so it is installed explicitly
-# here.
+# Java is required by some formulae (e.g. maven), so it is installed explicitly here.
 brew cask install --appdir=/Applications java
 
-formulae=(
-    ant
-    autoconf
-    awscli
-    bash-completion
-    bash-git-prompt
-    docker
-    docker-compose
-    docker-machine
-    docker-swarm
-    dockutil
-    ffmpeg
-    gdb # see also: http://ntraft.com/installing-gdb-on-os-x-mavericks/
-    git
-    gnupg
-    go
-    graphviz
-    lame
-    lftp
-    libdvdcss
-    libpng
-    libyaml
-    maven
-    mercurial
-    mongodb
-    ncftp
-    node
-    openssl
-    pkg-config
-    plantuml
-    rbenv
-    readline
-    ruby-build
-    tree
-    unrar
-    wget
-    x264
-    xvid
-    xz
-)
-
-for formula in "${formulae[@]}"; do
-    brew install $formula
-done
+while read formula
+do
+    brew install "$formula"
+done < $base_dir/brew.list

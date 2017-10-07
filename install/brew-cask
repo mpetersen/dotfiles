@@ -40,12 +40,9 @@ qlmanage -r
 
 # Launch some apps
 apps=(
-    "Caffeine"
-    "Cinch"
-    "ClipMenu"
     "Dropbox"
     "iStat Menus"
-    "KeePassX"
+    "MacPass"
 )
 for app in "${apps[@]}"; do
     open -a "/Applications/$app.app"

@@ -2,7 +2,7 @@ formulae=(
     backblaze
     burn
     duet
-    garagesale
+    https://raw.githubusercontent.com/caskroom/homebrew-cask/db7834d0199f0237300f18305c3cb10ca90259ef/Casks/garagesale.rb
     handbrake
     kindle
     mediathekview
