@@ -9,7 +9,7 @@ cmake
 curl
 dockutil
 ffmpeg
-gdb # see also: http://ntraft.com/installing-gdb-on-os-x-mavericks/
+gdb
 git
 go
 graphviz
@@ -21,6 +21,7 @@ libpng
 libyaml
 makeicns
 maven
+mas
 openssl
 tree
 unrar
