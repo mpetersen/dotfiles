@@ -158,6 +158,7 @@ function cmd_cloud {
         #"Creative Cloud Files"
         "Dropbox"
         "drivesync"
+        "OneDrive - Adobe Systems Inc"
         #"OneDrive"
         #"ownCloud"
     )
@@ -187,7 +188,7 @@ function cmd_cloud {
     log "Creating new links"
     for c in "${cloudfolders[@]}" ; do
         for b in "${basefolders[@]}" ; do
-            for d in $cloudbase/"$c"/"$b"/* ; do
+            for d in $cloudbase/$c/$b/* ; do
                 n=$(basename "$d")
                 t=~/"$b"/"$n"
                 [ -d "$d" ] && [ ! -s "$t" ] && ln -sv "$d" "$t ($c)"

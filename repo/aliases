@@ -2,6 +2,7 @@
 alias mvnsci="mvn -DskipTests -DskipTessa -Dfindbugs.skip=true -Dcheckstyle.skip=true clean install"
 alias mvnci="mvn clean install"
 alias mvncr="mvn clean release:prepare release:perform"
+alias azure-cli="docker run -it -v ${PWD}:/local azuresdk/azure-cli-python"
 # ------------------------------------------------------------------------------
 
 # lock screen
