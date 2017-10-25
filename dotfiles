@@ -150,51 +150,7 @@ function cmd_update {
 }
 
 function cmd_cloud {
-    log "Setup cloud folders"
-    log "(run this command again when syncing is completed: dotfiles cloud)"
-    cloudbase=~/Clouds
-    cloudfolders=(
-        #"Box Sync"
-        #"Creative Cloud Files"
-        "Dropbox"
-        "drivesync"
-        "OneDrive - Adobe Systems Inc"
-        #"OneDrive"
-        #"ownCloud"
-    )
-    basefolders=(
-        "Documents"
-        "Movies"
-        "Music"
-        "Pictures"
-    )
-
-    log "Creating cloud folders"
-    for c in "${cloudfolders[@]}" ; do
-        mkdir -vp $cloudbase/"$c"
-    done
-
-    log "Cleanup existing links"
-    for b in "${basefolders[@]}" ; do
-        for l in ~/"$b"/* ; do
-            t=$(readlink "$l")
-            if [[ $t == /Users/*/Clouds/* ]] ; then
-                echo "Removing $l"
-                unlink "$l"
-            fi
-        done
-    done
-
-    log "Creating new links"
-    for c in "${cloudfolders[@]}" ; do
-        for b in "${basefolders[@]}" ; do
-            for d in $cloudbase/$c/$b/* ; do
-                n=$(basename "$d")
-                t=~/"$b"/"$n"
-                [ -d "$d" ] && [ ! -s "$t" ] && ln -sv "$d" "$t ($c)"
-            done
-        done
-    done
+	install clouds
 }
 
 function cmd_unlink {

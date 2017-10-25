@@ -1,0 +1,67 @@
+#!/bin/bash
+
+CLOUD_BASE="Clouds"
+
+# remove links from the clouds folders, which might be created accidentially
+
+function rmlinks {
+	DIR=$1
+	for FILE in "$DIR"/*
+	do
+		if [ -L "$FILE" ]
+		then
+			rm -v "$FILE"
+		fi
+		if [ -d "$FILE" ]
+		then
+			rmlinks "$FILE"
+		fi
+	done
+}
+
+rmlinks ~/$CLOUD_BASE
+
+BASE_FOLDERS=(
+	"Documents"
+	"Movies"
+	"Music"
+	"Pictures"
+)
+
+# remove links from the home folders, which point to the cloud folders
+
+for BASE_FOLDER in "${BASE_FOLDERS[@]}"
+do
+	for LINK in $HOME/"$BASE_FOLDER"/*
+	do
+		TARGET=$(readlink "$LINK")
+		if [[ $TARGET == /Users/*/Clouds/* ]]
+		then
+			rm -v "$LINK"
+		fi
+	done
+done
+
+# create new links for each subfolder
+
+for CLOUD in "$HOME/$CLOUD_BASE/"*
+do
+	CLOUD_NAME=$(basename "$CLOUD")
+	if [ -d "$CLOUD" ]
+	then
+		for BASE_FOLDER in "${BASE_FOLDERS[@]}"
+		do
+			if [ -e "$CLOUD/$BASE_FOLDER" ]
+			then
+				for SOURCE in "$CLOUD/$BASE_FOLDER"/*
+				do
+					if [ -d "$SOURCE" ]
+					then
+						SOURCE_NAME=$(basename "$SOURCE")
+						ln -sv "$SOURCE" ~/"$BASE_FOLDER"/"$SOURCE_NAME ($CLOUD_NAME)"
+					fi
+				done
+			fi
+		done
+	fi
+done
