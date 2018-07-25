@@ -1,3 +1,15 @@
+# Aliases for work -------------------------------------------------------------
+alias mvnsci="mvn -DskipTests -DskipTessa -Dfindbugs.skip=true -Dcheckstyle.skip=true clean install"
+alias mvnci="mvn clean install"
+alias mvncr="mvn clean release:prepare release:perform"
+# ------------------------------------------------------------------------------
+
+# make directory and change into it
+mkcd() { mkdir -p "$1" && cd "$1"; }
+
+# Delete recursively files in the current directory
+rmf() { find . -name "$1" -delete; }
+
 # Easier navigation: .., ..., ...., ....., ~ and -
 alias ..="cd .."
 alias ...="cd ../.."
@@ -7,10 +19,11 @@ alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 
 # Shortcuts
-alias d="cd ~/Documents/Dropbox"
-alias dl="cd ~/Downloads"
-alias dt="cd ~/Desktop"
-alias p="cd ~/projects"
+alias cdo="cd ~/Documents"
+alias cdl="cd ~/Downloads"
+alias cdt="cd ~/Desktop"
+alias cgo="cd ~/Dev/Go"
+alias cgi="cd ~/Dev/Git"
 alias g="git"
 alias h="history"
 alias j="jobs"

@@ -1,3 +1,6 @@
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 export GOROOT=/usr/local/opt/go/libexec
 export GOPATH=$HOME/Dev/go
+
+export DECKTAPE_ROOT=$HOME/Dev/git/decktape
+export JAVA_HOME=/Library/Java/Home
