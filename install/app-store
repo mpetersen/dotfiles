@@ -1,0 +1,18 @@
+apps=(
+    "GPX Editor"
+    "Helium"
+    "Microsoft OneNote"
+    "Ringer"
+    "Magnet"
+    "TweetDeck"
+    "The Unarchiver"
+    "WISO steuer 2017"
+    "TNEF's Enough"
+    "ReadKit"
+    "Microsoft Remote Desktop"
+    "Slack"
+)
+
+for app in "${apps[@]}"; do
+    mas install "$app"
+done

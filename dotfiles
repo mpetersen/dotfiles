@@ -3,155 +3,8 @@
 
 base_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
-function pause {
-    read -p "Press [Enter] to continue..."
-}
-
-function log {
-    echo "=== $1 ==="
-}
-
-function cmd_help {
-    bold=$(tput bold)
-    normal=$(tput sgr0)
-
-    cat << EOF
-dotfiles organizes your Mac OS X dotfiles
-
-usage: dotfiles <command> [<flag>]
-
-Available flags are:
-
-Available commands are:
-  help          Prints this help text
-
-  setup         Sets up dotfiles and the environment on the current system.
-                This should be usually called only once, but can be called many
-                times without issue. This command also includes the update
-                command.
-                Flags:
-                --filevault     Enables FileVault (${bold}experimental!${normal})
-
-  update        Updates the dotfiles and the environment setup
-                Flags:
-                --nolink        Disables dotfiles linking (i.e. does not update
-                                links to dotfiles)
-                --noinstall     Disables installer execution
-                --noapps        Runs the installers, but does not install any
-                                apps
-                --home          Installs applications for home use
-                --work          Installs applications for work use
-
-  unlink        Unlinks the dotfiles so you can safely remove the .dotfiles
-                repository
-  cloud         Sets up the cloud directories and updates links to the
-                Documents, Movies, Music and Pictures directories.
-
-
-Copyright 2015 by Moritz Petersen
-
-
-EOF
-}
-
-function cmd_setup {
-    [ ! -f ~/defaults.orig ] && defaults read > ~/defaults.orig
-
-    if [ $enable_filevault ]; then
-        log "Enable FileVault - WARNING: experimental!"
-        sudo fdesetup enable -verbose -user `whoami`
-        pause
-    fi
-
-    log "Install developer tools"
-    xcode-select --install &> /dev/null
-
-    log "Install Homebrew"
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-    log "Install Homebrew Cask"
-    brew install caskroom/cask/brew-cask
-
-    log "Install Homebrew Versions"
-    brew tap homebrew/versions
-
-    log "Install Homebrew Fonts"
-    brew tap caskroom/fonts
-
-    log "Install Homebrew Completions"
-    brew tap homebrew/completions
-
-    log "Install Homebrew Dupes"
-    brew tap homebrew/dupes
-
-    log "Execute update command"
-    cmd_update
-}
-
-function install {
-    log "Execute $1 installer"
-    $base_dir/install/$1
-}
-
-function cmd_update {
-    log "Update from GitHub"
-    cd $base_dir
-    git pull
-
-    if [ ! $enable_noinstall ]; then
-        log "Update App Store software"
-        softwareupdate -ia
-
-        log "Run installers"
-        local installers=(
-            brew
-            brew-fonts
-            atom
-            safari
-            node
-            dock
-#            osx-defaults
-        )
-        for installer in "${installers[@]}"; do
-            install $installer
-        done
-
-        if [ ! $enable_noapps ]; then
-            log "Install apps"
-            install brew-cask
-        fi
-
-        if [ $enable_home ]; then
-            log "Install home apps"
-            install brew-cask-home
-        fi
-
-        if [ $enable_work ]; then
-            log "Install work apps"
-            install brew-cask-work
-        fi
-
-        log "Cleanup brew cellar and caskroom"
-        brew cleanup
-        brew cask cleanup
-    fi
-
-    if [ ! $enable_nolink ]; then
-        log "Link dotfiles"
-        for dotfile in $base_dir/repo/* ; do
-            name=$(basename "$dotfile")
-            [ ! -s ~/.$name ] && ln -sv $base_dir/repo/$name ~/.$name
-        done
-    fi
-
-    [ -e ~/.exports_private ] || touch ~/.exports_private
-
-    cmd_cloud
-}
-
+# Setup cloud folders
 function cmd_cloud {
-    log "Setup cloud folders"
-    log "(run this command again when syncing is completed: dotfiles cloud)"
     cloudbase=~/Clouds
     cloudfolders=(
         #"Box Sync"
@@ -168,12 +21,10 @@ function cmd_cloud {
         "Pictures"
     )
 
-    log "Creating cloud folders"
     for c in "${cloudfolders[@]}" ; do
         mkdir -vp $cloudbase/"$c"
     done
 
-    log "Cleanup existing links"
     for b in "${basefolders[@]}" ; do
         for l in ~/"$b"/* ; do
             t=$(readlink "$l")
@@ -184,7 +35,6 @@ function cmd_cloud {
         done
     done
 
-    log "Creating new links"
     for c in "${cloudfolders[@]}" ; do
         for b in "${basefolders[@]}" ; do
             for d in $cloudbase/"$c"/"$b"/* ; do
@@ -196,53 +46,87 @@ function cmd_cloud {
     done
 }
 
-function cmd_unlink {
-    echo ">> ${FUNCNAME[0]}"
+# Setup dock
+function cmd_dock {
+    dockutil --remove all --no-restart
+
+    apps=(
+        "/Applications/Utilities/Console.app"
+        "/Applications/iTerm.app"
+        "/Applications/Cyberduck.app"
+        "/Applications/MacPass.app"
+        "/Applications/Contacts.app"
+        "/Applications/Mail.app"
+        "/Applications/Messages.app"
+        "/Applications/Safari.app"
+        "/Applications/Calendar.app"
+        "/Applications/Microsoft OneNote.app"
+    )
+
+    for app in "${apps[@]}"; do
+        dockutil --add "$app" --no-restart
+    done
+
+    dockutil --add '/Applications' --view grid --display folder --sort name --no-restart
+    dockutil --add '~/Downloads' --view grid --display stack --sort dateadded --no-restart
+    dockutil --add '~' --view grid --display folder --sort kind --no-restart
+
+    killall Dock
 }
 
-# Available flags; passed as arguments with '--' prefix, e.g. --filevault
-# Will be mapped to variables with the prefix 'enable_', e.g.
-# enable_filevault
-flags=(
-    filevault
-    home
-    noapps
-    noinstall
-    nolink
-    work
-)
+# Syntax:
+# 
+#   install file cmd regex
+# 
+# Runs the install `cmd` for each line of the file, filtered with the regex
+# 
+function install {
+    install_file=$1
+    install_cmd=$2
+    install_regex=$3
+    while read line; do
+        id=`echo $line | sed -E "s/$install_regex|.*/\1/"`
+        $install_cmd $id
+    done <$install_file
+}
 
-# Available commands; corresponding command function is prefixed with
-# 'cmd_', e.g. cmd_help
-commands=(
-    help
-    setup
-    update
-    unlink
-    cloud
-)
+# Backup default configuration
+[ ! -f ~/.dotfiles/defaults.orig ] && defaults read > ~/.dotfiles/defaults.orig
 
-log "Default command is 'help'"
-command=help
-for arg in $@; do
-    for f in "${flags[@]}"; do
-        if [ "$arg" = "--$f" ]; then
-            declare enable_$f=true
-        fi
-    done
-    for c in "${commands[@]}"; do
-        if [ "$arg" = "$c" ]; then
-            command=$c
-        fi
-    done
-done
-
-log "Extend sudo timeout (when not executing help command)"
-if [ $command != "help" ]; then
-    sudo -v
+# Install brew and taps
+if ! hash "brew"; then
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+brew tap homebrew/cask-fonts
 fi
 
-log "Execute $command command"
-cmd_$command
+# Update brew
+brew update
+
+# Install software
+install $base_dir/install/brew-cask-list "brew cask install --appdir=/Applications" "(.*)"
+install $base_dir/install/brew-list "brew install" "(.*)"
+install $base_dir/install/mas-list "mas install" "([^ ]*).*"
+
+# Cleanup
+brew cleanup
+brew cask cleanup
+
+# Reload quicklook
+qlmanage -r
+
+# Setup dock
+cmd_dock
+
+# Setup cloud folders
+cmd_cloud
+
+# Install dotfiles
+for dotfile in $base_dir/repo/* ; do
+    name=$(basename "$dotfile")
+    [ ! -s ~/.$name ] && ln -sv $base_dir/repo/$name ~/.$name
+done
+
+# Create private exports file
+[ -e ~/.exports_private ] || touch ~/.exports_private
 
 exit 0

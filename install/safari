@@ -6,9 +6,10 @@ cd ~/Downloads
 
 urls=(
     http://www.instapaper.com/static/files/instapaper.safariextz
-    https://data.getadblock.com/safari/AdBlock.safariextz
-    https://github.com/hoyois/clicktoplugin/releases/download/v3.1.6/ClickToPlugin.safariextz
-    https://www.ghostery.com/safari/Ghostery.safariextz
+    https://github.com/infernoboy/JavaScript-Blocker-5/releases/download/Starfish-5.1.4/JSB5.safariextz # JSBlocker 5
+#    https://data.getadblock.com/safari/AdBlock.safariextz
+#    https://github.com/hoyois/clicktoplugin/releases/download/v3.1.6/ClickToPlugin.safariextz
+#    https://www.ghostery.com/safari/Ghostery.safariextz
 )
 
 for url in "${urls[@]}"; do
