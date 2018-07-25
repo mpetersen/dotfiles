@@ -7,12 +7,10 @@ base_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 function cmd_cloud {
     cloudbase=~/Clouds
     cloudfolders=(
-        #"Box Sync"
-        #"Creative Cloud Files"
+        "Adobe Systems Inc"
+        "OneDrive - Adobe Systems Inc"
         "Dropbox"
         "drivesync"
-        #"OneDrive"
-        #"ownCloud"
     )
     basefolders=(
         "Documents"
