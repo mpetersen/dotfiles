@@ -1,15 +1,9 @@
 formulae=(
     adobe-creative-cloud
     atom
-    boxcryptor
-    caffeine
-    cinch
-    clamxav
-    clipmenu
+    bbedit
     dropbox
-    dwihn0r-keepassx
-    eclipse-java
-    evernote
+    macpass
     firefox
     hex-fiend
     intellij-idea-ce
@@ -17,17 +11,14 @@ formulae=(
     iterm2
     libreoffice
     onyx
-    owncloud
-    p4merge
     sourcetree
     spotify
-    sqlitebrowser
-    superduper
     virtualbox
     xmind
+    https://raw.githubusercontent.com/m12n/homebrew-cask/f8f7cf8cb918a97fdf5e5fcf9cfeccf99503be7b/Casks/kickmount.rb
 )
 for formula in "${formulae[@]}"; do
-    brew cask install --appdir=/Applications $formula
+    brew cask install --force --appdir=/Applications $formula
 done
 
 
@@ -49,13 +40,9 @@ qlmanage -r
 
 # Launch some apps
 apps=(
-    "Caffeine"
-    "Cinch"
-    "ClipMenu"
     "Dropbox"
     "iStat Menus"
-    "KeePassX"
-    "owncloud"
+    "MacPass"
 )
 for app in "${apps[@]}"; do
     open -a "/Applications/$app.app"
