@@ -4,7 +4,9 @@ apm upgrade --no-confirm
 
 packages=(
     atom-beautify
+    autoclose-html
     go-plus
+    go-imports
     graphviz-preview
     highlight-selected
     language-plantuml
