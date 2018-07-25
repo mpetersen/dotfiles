@@ -93,8 +93,11 @@ function install {
 # Backup default configuration
 [ ! -f ~/.dotfiles/defaults.orig ] && defaults read > ~/.dotfiles/defaults.orig
 
-# Install brew
+# Install brew and taps
+if ! hash "brew"; then
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+brew tap homebrew/cask-fonts
+fi
 
 # Update brew
 brew update
