@@ -1,22 +1,19 @@
 formulae=(
     backblaze
-    box-sync
     burn
     duet
-    garagesale
+    https://raw.githubusercontent.com/caskroom/homebrew-cask/db7834d0199f0237300f18305c3cb10ca90259ef/Casks/garagesale.rb
     handbrake
     kindle
     mediathekview
     sonos
     steam
-    textwrangler
     teamviewer
-    things
     transmission
     vlc
-    wacom-tablet
+    wacom-intuos-tablet
     xld
 )
 for formula in "${formulae[@]}"; do
-    brew cask install --appdir=/Applications $formula
+    brew cask install --force --appdir=/Applications $formula
 done
