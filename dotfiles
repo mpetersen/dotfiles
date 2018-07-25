@@ -5,8 +5,6 @@ base_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 # Setup cloud folders
 function cmd_cloud {
-    log "Setup cloud folders"
-    log "(run this command again when syncing is completed: dotfiles cloud)"
     cloudbase=~/Clouds
     cloudfolders=(
         #"Box Sync"
@@ -23,12 +21,10 @@ function cmd_cloud {
         "Pictures"
     )
 
-    log "Creating cloud folders"
     for c in "${cloudfolders[@]}" ; do
         mkdir -vp $cloudbase/"$c"
     done
 
-    log "Cleanup existing links"
     for b in "${basefolders[@]}" ; do
         for l in ~/"$b"/* ; do
             t=$(readlink "$l")
@@ -39,7 +35,6 @@ function cmd_cloud {
         done
     done
 
-    log "Creating new links"
     for c in "${cloudfolders[@]}" ; do
         for b in "${basefolders[@]}" ; do
             for d in $cloudbase/"$c"/"$b"/* ; do
