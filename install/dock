@@ -5,16 +5,15 @@ brew install https://github.com/keith/homebrew/raw/ks-dockutil/Library/Formula/d
 dockutil --remove all --no-restart
 
 apps=(
-    "/System/Library/CoreServices/Network Diagnostics.app"
     "/Applications/Utilities/Console.app"
     "/Applications/iTerm.app"
-    "/Applications/KeePassX.app"
+    "/Applications/MacPass.app"
     "/Applications/Contacts.app"
     "/Applications/Mail.app"
     "/Applications/Messages.app"
     "/Applications/Safari.app"
     "/Applications/Calendar.app"
-    "/Applications/iTunes.app"
+    "/Applications/Microsoft OneNote.app"
 )
 
 for app in "${apps[@]}"; do
