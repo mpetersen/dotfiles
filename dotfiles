@@ -5,16 +5,14 @@ base_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 # Setup cloud folders
 function cmd_cloud {
-    log "Setup cloud folders"
-    log "(run this command again when syncing is completed: dotfiles cloud)"
     cloudbase=~/Clouds
     cloudfolders=(
-        #"Box Sync"
-        #"Creative Cloud Files"
+        "Adobe Systems Inc"
+        "OneDrive"
+        "OneDrive - Adobe Systems Inc"
+        "OneDrive - Adobe Systems Incorporated"
         "Dropbox"
         "drivesync"
-        #"OneDrive"
-        #"ownCloud"
     )
     basefolders=(
         "Documents"
@@ -23,12 +21,10 @@ function cmd_cloud {
         "Pictures"
     )
 
-    log "Creating cloud folders"
     for c in "${cloudfolders[@]}" ; do
         mkdir -vp $cloudbase/"$c"
     done
 
-    log "Cleanup existing links"
     for b in "${basefolders[@]}" ; do
         for l in ~/"$b"/* ; do
             t=$(readlink "$l")
@@ -39,7 +35,6 @@ function cmd_cloud {
         done
     done
 
-    log "Creating new links"
     for c in "${cloudfolders[@]}" ; do
         for b in "${basefolders[@]}" ; do
             for d in $cloudbase/"$c"/"$b"/* ; do
@@ -97,6 +92,12 @@ function install {
 
 # Backup default configuration
 [ ! -f ~/.dotfiles/defaults.orig ] && defaults read > ~/.dotfiles/defaults.orig
+
+# Install brew and taps
+if ! hash "brew"; then
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+brew tap homebrew/cask-fonts
+fi
 
 # Update brew
 brew update

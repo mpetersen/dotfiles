@@ -7,5 +7,9 @@ dockutil
 git
 go
 graphviz
+<<<<<<< HEAD
+=======
+jupyter
+>>>>>>> 1f27e3dc37531674ec88c8a5673a71861c792931
 mas
 maven
