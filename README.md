@@ -42,3 +42,8 @@ Testing
 If you want to test the dotfiles tool on a clean Mac, there is no need to wipe your machine. Instead, you can install a clean system on VirtualBox. Follow [this link to setup OS X on VirtualBox](https://ntk.me/2012/09/07/os-x-on-os-x/).
 
 If you continue to work on the dotfiles tool and want to test, I recommend to create a snapshot after a clean system install.
+
+Notes
+-----
+
+- Manage the SSH key passphrase: https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/#adding-your-ssh-key-to-the-ssh-agent
