@@ -9,17 +9,20 @@ mkcd() { mkdir -p "$1" && cd "$1"; }
 
 # checkout code in the right directory and change to directory
 function gitcd() {
-	REGEX="(git@|https:\/\/)(.*)[:\/](.*)\/([^\.]*).git"
-	if [[ $1 =~ $REGEX ]]
-	then
-		HOST=${BASH_REMATCH[2]}
-		USER=${BASH_REMATCH[3]}
-		REPO=${BASH_REMATCH[4]}
-		DIR="$GITROOT/$HOST/$USER"
-		mkdir -vp $DIR
-		cd $DIR
+	regex="(git@|https:\/\/)(.*)[:\/](.*)\/(.*).git"
+	if [[ $1 =~ $regex ]]; then
+		host=${BASH_REMATCH[2]}
+		user=${BASH_REMATCH[3]}
+		repo=${BASH_REMATCH[4]}
+		if [ -n $GITROOT ]; then
+			echo "\$GITROOT not set. Using $PWD instead"
+			GITROOT=$PWD
+		fi
+		dir="$GITROOT/$host/$user"
+		mkdir -vp $dir
+		cd $dir
 		git clone $1
-		cd $REPO
+		cd $repo
 	fi
 }
 
