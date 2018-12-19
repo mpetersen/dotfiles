@@ -1,1 +1,1 @@
-cp Shortcuts.json /Users/mpeterse/Library/Application Support/Spectacle/Shortcuts.json
+cp Shortcuts.json "$HOME/Library/Application Support/Spectacle/Shortcuts.json"
