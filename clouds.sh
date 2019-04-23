@@ -1,47 +1,37 @@
 #!/bin/bash
-# .dotfiles installation script for Mac OS X
+# Link cloud folders to home folder
 
-base_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+home="$HOME"
+clouds="$HOME/Clouds"
 
-# Setup cloud folders
-function cmd_cloud {
-    cloudbase=~/Clouds
-    cloudfolders=(
-        "Adobe Systems Inc"
-        "OneDrive"
-        "OneDrive - Adobe Systems Inc"
-        "OneDrive - Adobe Systems Incorporated"
-        "Dropbox"
-        "drivesync"
-    )
-    basefolders=(
-        "Documents"
-        "Movies"
-        "Music"
-        "Pictures"
-    )
-
-    for c in "${cloudfolders[@]}" ; do
-        mkdir -vp $cloudbase/"$c"
-    done
-
-    for b in "${basefolders[@]}" ; do
-        for l in ~/"$b"/* ; do
-            t=$(readlink "$l")
-            if [[ $t == /Users/*/Clouds/* ]] ; then
-                echo "Removing $l"
-                unlink "$l"
+# clean up links that point to cloud folders
+for dir in $home/* ; do
+    if [[ -d "$dir" ]] ; then
+        for item in $dir/* ; do
+            target=$(readlink "$item")
+            if [[ $target == /Users/*/Clouds/* ]] ; then
+                echo "Removing $item"
+                unlink "$item"
             fi
         done
-    done
+    fi
+done
 
-    for c in "${cloudfolders[@]}" ; do
-        for b in "${basefolders[@]}" ; do
-            for d in $cloudbase/"$c"/"$b"/* ; do
-                n=$(basename "$d")
-                t=~/"$b"/"$n"
-                [ -d "$d" ] && [ ! -s "$t" ] && ln -sv "$d" "$t ($c)"
+# for each cloud
+for cloud in $clouds/* ; do
+    cloud_name=$(basename $cloud)
+    # check if sub-folder contains a directory that is also available in home folder
+    for folder in $cloud/* ; do
+        folder_name=$(basename "$folder")
+        target="$home/$folder_name"
+        if [[ -d "$target" ]] ; then
+            for item in $folder/* ; do
+                if [[ -d "$item" ]] ; then
+                    item_name=$(basename "$item")
+                    # then create a link for each sub-folder/file of that directory
+                    ln -sv "$item" "$target/$item_name ($cloud_name)"
+                fi
             done
-        done
+        fi
     done
-}
+done
