@@ -10,7 +10,6 @@ for dir in $home/* ; do
         for item in $dir/* ; do
             target=$(readlink "$item")
             if [[ $target == /Users/*/Clouds/* ]] ; then
-                echo "Removing $item"
                 unlink "$item"
             fi
         done
@@ -21,15 +20,15 @@ done
 for cloud in $clouds/* ; do
     cloud_name=$(basename $cloud)
     # check if sub-folder contains a directory that is also available in home folder
-    for folder in $cloud/* ; do
+    for folder in "$cloud"/* ; do
         folder_name=$(basename "$folder")
         target="$home/$folder_name"
         if [[ -d "$target" ]] ; then
-            for item in $folder/* ; do
+            for item in "$folder"/* ; do
                 if [[ -d "$item" ]] ; then
                     item_name=$(basename "$item")
                     # then create a link for each sub-folder/file of that directory
-                    ln -sv "$item" "$target/$item_name ($cloud_name)"
+                    ln -s "$item" "$target/$item_name ($cloud_name)"
                 fi
             done
         fi
