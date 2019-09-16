@@ -31,3 +31,6 @@ if [ -f '/Users/moritz/Dev/go/google-cloud-sdk/path.bash.inc' ]; then source '/U
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/moritz/Dev/go/google-cloud-sdk/completion.bash.inc' ]; then source '/Users/moritz/Dev/go/google-cloud-sdk/completion.bash.inc'; fi
+
+# Java Home
+export JAVA_HOME=$(/usr/libexec/java_home -v 12.0)
