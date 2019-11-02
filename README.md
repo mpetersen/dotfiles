@@ -30,6 +30,17 @@ This will set up:
 - Install Applications from Homebrew and Appstore
 - Install dotfiles
 
+Updating install files
+----------------------
+
+If you want to update the install files for Homebrew and Appstore, you need to run the following commands:
+
+```
+brew cask list > ~/.dotfiles/install/brew-cask-list
+brew list > ~/.dotfiles/install/brew-list
+mas list > ~/.dotfiles/install/mas-list
+```
+
 Install Cloud folders
 ---------------------
 
