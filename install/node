@@ -1,9 +1,0 @@
-# Install node / npm packages
-
-brew install node
-
-npm install -g yo
-npm install -g generator-webapp
-npm install -g grunt-cli
-npm install -g grunt-php
-npm install -g bower
