@@ -1,8 +1,0 @@
-formulae=(
-    citrix-receiver
-    google-chrome
-    ipass-open-mobile
-)
-for formula in "${formulae[@]}"; do
-    brew cask install --force --appdir=/Applications $formula
-done
