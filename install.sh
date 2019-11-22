@@ -3,33 +3,6 @@
 
 base_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
-# Setup dock
-function cmd_dock {
-    dockutil --remove all --no-restart
-
-    apps=(
-        "/Applications/Utilities/Console.app"
-        "/Applications/iTerm.app"
-        "/Applications/Cyberduck.app"
-        "/Applications/MacPass.app"
-        "/Applications/Contacts.app"
-        "/Applications/Mail.app"
-        "/Applications/Messages.app"
-        "/Applications/Safari.app"
-        "/Applications/Calendar.app"
-        "/Applications/Microsoft OneNote.app"
-    )
-
-    for app in "${apps[@]}"; do
-        dockutil --add "$app" --no-restart
-    done
-
-    dockutil --add '/Applications' --view grid --display folder --sort name --no-restart
-    dockutil --add '~/Downloads' --view grid --display stack --sort dateadded --no-restart
-    dockutil --add '~' --view grid --display folder --sort kind --no-restart
-
-    killall Dock
-}
 
 # Syntax:
 # 
@@ -54,6 +27,7 @@ function install {
 if ! hash "brew"; then
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew tap homebrew/cask-fonts
+brew tap homebrew/cask-drivers
 fi
 
 # Update brew
@@ -66,13 +40,9 @@ install $base_dir/install/mas-list "mas install" "([^ ]*).*"
 
 # Cleanup
 brew cleanup
-brew cask cleanup
 
 # Reload quicklook
 qlmanage -r
-
-# Setup dock
-cmd_dock
 
 # Install dotfiles
 for dotfile in $base_dir/repo/* ; do
