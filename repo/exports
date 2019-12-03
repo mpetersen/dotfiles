@@ -2,6 +2,6 @@ export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 export GOROOT=/usr/local/opt/go/libexec
 export GOPATH=$HOME/Code/go
 
-export JAVA_HOME=/Library/Java/Home
+export JAVA_HOME=$(/usr/libexec/java_home)
 
 export GITROOT=$HOME/Code/git
