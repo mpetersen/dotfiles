@@ -1,5 +1,5 @@
 # Add `~/bin` to the `$PATH`
-export PATH="$HOME/Dev/bin:$PATH";/Users/mpeterse/Code/git/git.corp.adobe.com/mpeterse/scripts;
+export PATH="$HOME/Dev/bin:$HOME/Code/git/git.corp.adobe.com/mpeterse/scripts:$PATH"
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
