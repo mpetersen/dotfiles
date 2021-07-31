@@ -4,10 +4,15 @@
 dockutil --remove all --no-restart
 
 apps=(
+  iTerm
+  Bitwarden
+  Mail
+  Messages
+  Safari
 )
 
 for app in "${apps[@]}"; do
-	dockutil --add "$app" --no-restart
+	dockutil --add "/Applications/$app.app" --no-restart
 done
 
 dockutil --add '/Applications' --view grid --display folder --sort name --no-restart

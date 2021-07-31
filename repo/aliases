@@ -19,7 +19,7 @@ function gitcd() {
 		mkdir -vp $dir
 		cd $dir
 		if [ ! -d "$repo" ]; then
-			echo "create"
+			echo "New git repo"
 			git clone $1
 		fi
 		cd $repo

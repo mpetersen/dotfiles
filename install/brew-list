@@ -2,10 +2,11 @@ bash-completion
 bash-git-prompt
 curl
 dockutil
+exiftool
 git
-go
 graphviz
+kubernetes-cli
 mas
 maven
-openssl
-tree
+minikube
+readline

@@ -34,8 +34,11 @@ fi
 brew update
 
 # Install software
+# brew list --cask > brew-cask-list
 install $base_dir/install/brew-cask-list "brew cask install --appdir=/Applications" "(.*)"
+# brew list --formulae > brew-list
 install $base_dir/install/brew-list "brew install" "(.*)"
+# mas list > mas-list
 install $base_dir/install/mas-list "mas install" "([^ ]*).*"
 
 # Cleanup

@@ -1,8 +1,8 @@
 paths=(
     $GOROOT/bin
     $GOPATH/bin
-    $HOME/Dev/bin
-    $HOME/.dotfiles/bin
+    $HOME/Code/bin
+    $HOME/Code/git/git.corp.adobe.com/mpeterse/scripts
 )
 
 for path in "${paths[@]}"; do
