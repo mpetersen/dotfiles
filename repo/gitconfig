@@ -16,3 +16,5 @@
 	tool = p4mergetool
 [credential]
 	helper = osxkeychain
+[init]
+	defaultBranch = main
