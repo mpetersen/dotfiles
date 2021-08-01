@@ -55,6 +55,15 @@ Handling confidential information
 
 Store confidential information in `~/.exports_private`.
 
+Update the dock
+---------------
+
+Run the following command to update the dock to standard configuration:
+
+```
+~/.dotfiles/dock.sh
+```
+
 Testing
 -------
 
