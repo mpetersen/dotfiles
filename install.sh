@@ -32,20 +32,18 @@ fi
 
 # Update brew
 brew update
+brew upgrade
 
-# Install software
-# brew list --cask > brew-cask-list
-install $base_dir/install/brew-cask-list "brew cask install --appdir=/Applications" "(.*)"
-# brew list --formulae > brew-list
+# Install software (see: README.md)
+install $base_dir/install/brew-cask-list "brew install --cask --appdir=/Applications" "(.*)"
 install $base_dir/install/brew-list "brew install" "(.*)"
-# mas list > mas-list
 install $base_dir/install/mas-list "mas install" "([^ ]*).*"
 
 # Cleanup
 brew cleanup
 
-# Reload quicklook
-qlmanage -r
+# Reload quicklook (currently disabled)
+#qlmanage -r
 
 # Install dotfiles
 for dotfile in $base_dir/repo/* ; do
