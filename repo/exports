@@ -1,9 +1,0 @@
-export HOMEBREW_CASK_OPTS="--appdir=/Applications"
-#export GOROOT=/usr/local/opt/go/libexec
-#export GOPATH=$HOME/Code/go
-
-export JAVA_HOME=$(/usr/libexec/java_home -v 16)
-
-export GITROOT=$HOME/Code/git
-
-export BASH_SILENCE_DEPRECATION_WARNING=1
