@@ -8,7 +8,7 @@ base_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 # 
 #   install file cmd regex
 # 
-# Runs the install `cmd` for each line of the file, filtered with the regex
+# Runs the install `cmd` for each line of the file, filtered with the `regex`
 # 
 function install {
     install_file=$1
