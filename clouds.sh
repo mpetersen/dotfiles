@@ -18,7 +18,7 @@ done
 
 # for each cloud
 for cloud in $clouds/* ; do
-    cloud_name=$(basename $cloud)
+    cloud_name=$(basename "$cloud")
     # check if sub-folder contains a directory that is also available in home folder
     for folder in "$cloud"/* ; do
         folder_name=$(basename "$folder")
