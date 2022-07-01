@@ -1,12 +1,17 @@
+awscli
 bash-completion
 bash-git-prompt
 curl
 dockutil
 exiftool
 git
+gradle
 graphviz
 kubernetes-cli
 mas
 maven
 minikube
 readline
+tree
+vault
+wireshark

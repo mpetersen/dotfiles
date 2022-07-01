@@ -1,5 +1,5 @@
 [user]
-	name = Moritz
+	name = Moritz Petersen
 	email = mpeterse@adobe.com
 [core]
 	excludesfile = ~/.gitignore_global
@@ -18,3 +18,8 @@
 	helper = osxkeychain
 [init]
 	defaultBranch = main
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

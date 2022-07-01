@@ -1,7 +1,7 @@
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
-export JAVA_HOME=$(/usr/libexec/java_home -v 11)
+export JAVA_HOME=$(/usr/libexec/java_home -v 18)
 export GITROOT=$HOME/Code/git
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
