@@ -3,6 +3,13 @@ dotfiles
 
 My dotfiles repository.
 
+Preparation
+-----------
+
+Before starting, make sure you have `bash` enabled as default shell.
+
+> Note: I'm planning to migrate to `zsh`, but this is not yet available.
+
 Download
 --------
 
