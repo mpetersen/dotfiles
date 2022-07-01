@@ -26,6 +26,8 @@ function gitcd() {
 	fi
 }
 
+idea() { open -a /Applications/IntelliJ\ IDEA\ CE.app "$1"; }
+
 # Delete recursively files in the current directory
 rmf() { find . -name "$1" -delete; }
 
