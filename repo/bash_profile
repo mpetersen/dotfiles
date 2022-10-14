@@ -9,7 +9,7 @@ source ~/.exports_private
 source ~/.aliases
 
 # Add brew to path
-eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$(brew shellenv)"
 
 # Bash completion
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
@@ -25,5 +25,5 @@ fi
 export PATH=$PATH:$HOME/Code/bin
 export PATH=$PATH:$HOME/Code/git/git.corp.adobe.com/mpeterse/scripts
 export PATH=$PATH:/usr/local/bin
-export PATH=$PATH:/opt/homebrew/opt/python@3.9/libexec/bi:
+export PATH=$PATH:/opt/homebrew/opt/python@3.9/libexec/bin
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
