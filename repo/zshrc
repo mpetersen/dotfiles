@@ -16,3 +16,5 @@ plugins=(
 source ~/.exports_private
 source ~/.aliases
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
+

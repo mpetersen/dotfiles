@@ -26,6 +26,7 @@ function install {
 # Install brew and taps
 if ! hash "brew"; then
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+eval "$(/opt/homebrew/bin/brew shellenv)"
 brew tap homebrew/cask-fonts
 brew tap homebrew/cask-drivers
 fi
