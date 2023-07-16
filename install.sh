@@ -45,13 +45,13 @@ brew cleanup
 # Reload quicklook (currently disabled)
 #qlmanage -r
 
-# Install dotfiles
-for dotfile in $base_dir/repo/* ; do
-    name=$(basename "$dotfile")
-    [ ! -s ~/.$name ] && ln -sv $base_dir/repo/$name ~/.$name
-done
+# Also install for zsh
+# ln -sv ~/.bash_profile ~/.zprofile
 
 # Create private exports file
 [ -e ~/.exports_private ] || touch ~/.exports_private
+
+# Install Oh My Zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 exit 0

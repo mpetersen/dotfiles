@@ -1,0 +1,30 @@
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+export JAVA_HOME=$(/usr/libexec/java_home)
+export GITROOT=$HOME/Code/git
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
+source ~/.exports_private
+#source ~/.aliases
+
+# Add brew to path
+#eval "$(brew shellenv)"
+
+# Bash completion
+#if [ -f $(brew --prefix)/etc/bash_completion ]; then
+#  . $(brew --prefix)/etc/bash_completion
+#fi
+
+# Git bash prompt
+#if [ -f "$(brew --prefix bash-git-prompt)/share/gitprompt.sh" ]; then
+#  GIT_PROMPT_THEME=Default
+#  source "$(brew --prefix bash-git-prompt)/share/gitprompt.sh"
+#fi
+
+export PATH=$PATH:$HOME/Code/bin
+export PATH=$PATH:$HOME/Code/git/git.corp.adobe.com/mpeterse/scripts
+export PATH=$PATH:/usr/local/bin
+#export PATH=$PATH:/opt/homebrew/opt/python@3.9/libexec/bin
+export PATH=$PATH:/Applications/IntelliJ\ IDEA\ CE.app/Contents/MacOS
+export PATH=$PATH:$JAVA_HOME/bin

@@ -3,15 +3,11 @@ bash-completion
 bash-git-prompt
 curl
 dockutil
-exiftool
 git
-gradle
 graphviz
-kubernetes-cli
+makeicns
 mas
 maven
-minikube
+openjdk
 readline
 tree
-vault
-wireshark
