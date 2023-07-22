@@ -2,6 +2,9 @@
 
 base_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
+# Enable FileVault
+sudo fdesetup enable
+
 # Install dotfiles
 for dotfile in $base_dir/repo/* ; do
     name=$(basename "$dotfile")
