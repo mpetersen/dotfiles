@@ -39,8 +39,8 @@ brew update
 brew upgrade
 
 # Install software (see: README.md)
-#install $base_dir/install/brew-cask-list "brew install --cask --appdir=/Applications" "(.*)"
-install $base_dir/install/brew-list "brew install" "(.*)"
+install $base_dir/install/brew-list "brew install --formulae" "(.*)"
+install $base_dir/install/brew-cask-list "brew install --cask --appdir=/Applications" "(.*)"
 install $base_dir/install/mas-list "mas install" "([^ ]*).*"
 
 # Cleanup
