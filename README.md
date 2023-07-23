@@ -23,7 +23,15 @@ If you are executing this command on a new Mac, `git` might not be installed yet
 
 After installing the developer tools, execute the above command again and the dotfiles repository will be downloaded at `.dotfiles` in your home directory. This is a git repository that you can use to update your dotfiles.
 
-Install dotfiles
+Setup dotfiles
+--------------
+
+```
+~/.dotfiles/setup.sh
+```
+
+
+Install binaries
 ----------------
 
 In the `.dotfiles` repository folder you find a tool to install dotfiles: `dotfiles`:
@@ -32,10 +40,9 @@ In the `.dotfiles` repository folder you find a tool to install dotfiles: `dotfi
 ~/.dotfiles/install.sh
 ```
 
-This will set up:
+This will install:
 - Homebrew
-- Install Applications from Homebrew and Appstore
-- Install dotfiles
+- Applications from Homebrew and Appstore
 
 Updating install files
 ----------------------
