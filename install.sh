@@ -23,20 +23,23 @@ function install {
 # Backup default configuration
 [ ! -f ~/.dotfiles/defaults.orig ] && defaults read > ~/.dotfiles/defaults.orig
 
-# Install brew and taps
-if ! hash "brew"; then
+# Install brew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-eval "$(/opt/homebrew/bin/brew shellenv)"
-brew tap homebrew/cask-fonts
-brew tap homebrew/cask-drivers
-fi
+
+# Install brew and taps
+#if ! hash "brew"; then
+#/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+#eval "$(/opt/homebrew/bin/brew shellenv)"
+#brew tap homebrew/cask-fonts
+#brew tap homebrew/cask-drivers
+#fi
 
 # Update brew
 brew update
 brew upgrade
 
 # Install software (see: README.md)
-install $base_dir/install/brew-cask-list "brew install --cask --appdir=/Applications" "(.*)"
+#install $base_dir/install/brew-cask-list "brew install --cask --appdir=/Applications" "(.*)"
 install $base_dir/install/brew-list "brew install" "(.*)"
 install $base_dir/install/mas-list "mas install" "([^ ]*).*"
 
@@ -53,6 +56,14 @@ brew cleanup
 [ -e ~/.exports_private ] || touch ~/.exports_private
 
 # Install Oh My Zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+#sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# Install Prezto
+# Source: https://github.com/sorin-ionescu/prezto
+#git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+#setopt EXTENDED_GLOB
+#for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+#  ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+#done
 
 exit 0
