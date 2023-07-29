@@ -1,8 +1,7 @@
-dockutil
 exiftool
 makeicns
 mas
 maven
 neovim
-openjdk
 readline
+temurin

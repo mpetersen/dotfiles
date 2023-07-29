@@ -9,7 +9,7 @@ apps=(
   /System/Applications/Mail.app
   /System/Applications/Messages.app
   /System/Applications/Calendar.app
-  /Applications/Safari.app
+  /System/Cryptexes/App/System/Applications/Safari.app
 )
 
 for app in "${apps[@]}"; do
