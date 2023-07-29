@@ -11,15 +11,14 @@ export PATH=$PATH:/Applications/IntelliJ\ IDEA\ CE.app/Contents/MacOS
 #ZSH_THEME="robbyrussell"
 
 # Plugins
-plugins=(
-  brew
-  docker
-  git
-  macos
-)
+#plugins=(
+#  brew
+#  docker
+#  git
+#  macos
+#)
 
 source ~/.exports_private
 source ~/.aliases
 
-#eval "$(/opt/homebrew/bin/brew shellenv)"
-
+eval "$(/opt/homebrew/bin/brew shellenv)"

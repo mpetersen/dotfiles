@@ -24,18 +24,18 @@ function install {
 [ ! -f ~/.dotfiles/defaults.orig ] && defaults read > ~/.dotfiles/defaults.orig
 
 # Install brew
+if ! hash "brew"; then
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
 # Install brew and taps
-#if ! hash "brew"; then
 #/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-#eval "$(/opt/homebrew/bin/brew shellenv)"
 #brew tap homebrew/cask-fonts
 #brew tap homebrew/cask-drivers
-#fi
 
 # Update brew
-brew update
+brew update --force --quiet
 brew upgrade
 
 # Install software (see: README.md)
