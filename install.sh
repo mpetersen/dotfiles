@@ -25,9 +25,9 @@ function install() {
     done <$install_file
 }
 
-function log {
+function log() {
   echo "####"
-  echo "#### $1 ####"
+  echo "#### $1"
   echo "####"
 }
 
