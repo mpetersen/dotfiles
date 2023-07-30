@@ -3,12 +3,12 @@ dotfiles
 
 My dotfiles repository.
 
+
 Preparation
 -----------
 
-Before starting, make sure you have `bash` enabled as default shell.
+This version of my dotfiles is installing a zsh configuration.
 
-> Note: I'm planning to migrate to `zsh`, but this is not yet available.
 
 Download
 --------
@@ -23,13 +23,6 @@ If you are executing this command on a new Mac, `git` might not be installed yet
 
 After installing the developer tools, execute the above command again and the dotfiles repository will be downloaded at `.dotfiles` in your home directory. This is a git repository that you can use to update your dotfiles.
 
-Setup dotfiles
---------------
-
-```
-~/.dotfiles/setup.sh
-```
-
 
 Install binaries
 ----------------
@@ -40,9 +33,23 @@ In the `.dotfiles` repository folder you find a tool to install dotfiles: `dotfi
 ~/.dotfiles/install.sh
 ```
 
-This will install:
-- Homebrew
-- Applications from Homebrew and Appstore
+This script does:
+- Enable FileVault
+- Install Homebrew
+- Install applications from Homebrew and Appstore
+
+
+Setup dotfiles
+--------------
+
+```
+~/.dotfiles/setup.sh
+```
+
+This script does:
+- Remove existing files or links
+- Create new links
+
 
 Updating install files
 ----------------------
@@ -55,6 +62,7 @@ brew list --formulae > ~/.dotfiles/install/brew-list
 mas list > ~/.dotfiles/install/mas-list
 ```
 
+
 Install Cloud folders
 ---------------------
 
@@ -64,10 +72,12 @@ You can install your cloud folders (e.g. Creative Cloud, OneDrive, Dropbox etc.)
 ~/.dotfiles/clouds.sh
 ```
 
+
 Handling confidential information
 ---------------------------------
 
 Store confidential information in `~/.exports_private`.
+
 
 Update the dock
 ---------------
@@ -78,12 +88,14 @@ Run the following command to update the dock to standard configuration:
 ~/.dotfiles/dock.sh
 ```
 
+
 Testing
 -------
 
 If you want to test the dotfiles tool on a clean Mac, there is no need to wipe your machine. Instead, you can install a clean system on VirtualBox. Follow [this link to setup OS X on VirtualBox](https://ntk.me/2012/09/07/os-x-on-os-x/).
 
 If you continue to work on the dotfiles tool and want to test, I recommend to create a snapshot after a clean system install.
+
 
 Notes
 -----

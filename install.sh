@@ -3,7 +3,6 @@
 
 base_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
-
 # Syntax:
 # 
 #   install file cmd regex
@@ -22,6 +21,9 @@ function install {
 
 # Backup default configuration
 [ ! -f ~/.dotfiles/defaults.orig ] && defaults read > ~/.dotfiles/defaults.orig
+
+# Enable FileVault
+sudo fdesetup enable
 
 # Install brew
 if ! hash "brew"; then

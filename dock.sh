@@ -6,13 +6,21 @@ dockutil --remove all --no-restart
 apps=(
   /Applications/iTerm.app
   /Applications/Bitwarden.app
+  "/Applications/Microsoft Outlook.app"
   /System/Applications/Mail.app
-  /System/Applications/Messages.app
   /System/Applications/Calendar.app
-  /System/Cryptexes/App/System/Applications/Safari.app
+  "/Applications/IntelliJ IDEA CE.app"
+  /Applications/Slack.app
+  /System/Applications/Messages.app
+  "/Applications/Microsoft Edge.app"
+  /Applications/Safari.app
 )
 
 for app in "${apps[@]}"; do
+  # If link add the linked app
+  if [[ -L "$app" ]]; then
+    app=$(cd "$app" && realpath .)
+  fi
 	dockutil --add "$app" --no-restart
 done
 
