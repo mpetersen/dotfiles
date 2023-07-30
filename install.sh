@@ -26,9 +26,10 @@ function install() {
 }
 
 function log() {
-  echo "####"
-  echo "#### $1"
-  echo "####"
+  echo "==============================================================================================================="
+  echo "="
+  echo "=    $1"
+  echo "="
 }
 
 # Backup default configuration
