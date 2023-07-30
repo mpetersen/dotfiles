@@ -19,13 +19,21 @@ function install {
     done <$install_file
 }
 
+function log {
+  echo
+  echo "#### $1 ####"
+  echo
+}
+
 # Backup default configuration
 [ ! -f ~/.dotfiles/defaults.orig ] && defaults read > ~/.dotfiles/defaults.orig
 
 # Enable FileVault
+log "Enable FileVault"
 sudo fdesetup enable
 
 # Install brew
+log "Install Homebrew"
 if ! hash "brew"; then
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -37,15 +45,20 @@ fi
 #brew tap homebrew/cask-drivers
 
 # Update brew
+log "Update Homebrew"
 brew update --force --quiet
 brew upgrade
 
 # Install software (see: README.md)
+log "Install formulae"
 install $base_dir/install/brew-list "brew install --formulae" "(.*)"
+log "Install casks"
 install $base_dir/install/brew-cask-list "brew install --cask --appdir=/Applications" "(.*)"
+log "Install from App Store"
 install $base_dir/install/mas-list "mas install" "([^ ]*).*"
 
 # Cleanup
+log "Cleanup Homebrew"
 brew cleanup
 
 # Reload quicklook (currently disabled)
@@ -53,6 +66,7 @@ brew cleanup
 
 # Install Prezto
 # Source: https://github.com/sorin-ionescu/prezto
+log "Install Prezto"
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 setopt EXTENDED_GLOB
 for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
