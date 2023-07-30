@@ -51,21 +51,12 @@ brew cleanup
 # Reload quicklook (currently disabled)
 #qlmanage -r
 
-# Also install for zsh
-# ln -sv ~/.bash_profile ~/.zprofile
-
-# Create private exports file
-[ -e ~/.exports_private ] || touch ~/.exports_private
-
-# Install Oh My Zsh
-#sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
 # Install Prezto
 # Source: https://github.com/sorin-ionescu/prezto
-#git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
-#setopt EXTENDED_GLOB
-#for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
-#  ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
-#done
+git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+setopt EXTENDED_GLOB
+for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+  ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+done
 
 exit 0
