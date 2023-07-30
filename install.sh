@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 # .dotfiles installation script for Mac OS X
 
 base_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
