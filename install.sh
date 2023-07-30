@@ -1,7 +1,7 @@
 #!/bin/zsh
 # .dotfiles installation script for Mac OS X
 
-base_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+base_dir=${0:a:h}
 
 # Syntax:
 # 
@@ -9,20 +9,26 @@ base_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 # 
 # Runs the install `cmd` for each line of the file, filtered with the `regex`
 # 
-function install {
+function install() {
+    echo "install($1, $2, $3)"
     install_file=$1
     install_cmd=$2
     install_regex=$3
     while read line; do
+        echo "line: $line"
         id=`echo $line | sed -E "s/$install_regex|.*/\1/"`
-        $install_cmd $id
+        echo "id: $id"
+        echo "command: $install_cmd $id"
+        cmd="$install_cmd $id"
+        eval ${cmd}
+#        $install_cmd $id
     done <$install_file
 }
 
 function log {
-  echo
+  echo "####"
   echo "#### $1 ####"
-  echo
+  echo "####"
 }
 
 # Backup default configuration
