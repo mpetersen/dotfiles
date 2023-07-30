@@ -10,18 +10,13 @@ base_dir=${0:a:h}
 # Runs the install `cmd` for each line of the file, filtered with the `regex`
 # 
 function install() {
-    echo "install($1, $2, $3)"
     install_file=$1
     install_cmd=$2
     install_regex=$3
     while read line; do
-        echo "line: $line"
         id=`echo $line | sed -E "s/$install_regex|.*/\1/"`
-        echo "id: $id"
-        echo "command: $install_cmd $id"
         cmd="$install_cmd $id"
         eval ${cmd}
-#        $install_cmd $id
     done <$install_file
 }
 
@@ -74,10 +69,12 @@ brew cleanup
 # Install Prezto
 # Source: https://github.com/sorin-ionescu/prezto
 log "Install Prezto"
-git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
-setopt EXTENDED_GLOB
-for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
-  ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
-done
+if [[ ! -a "${ZDOTDIR:-$HOME}/.zprezto" ]]; then
+  git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+  setopt EXTENDED_GLOB
+  for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+    ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+  done
+fi
 
 exit 0
