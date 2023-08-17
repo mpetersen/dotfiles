@@ -11,9 +11,9 @@ mkcd() { mkdir -p "$1" && cd "$1"; }
 function gitcd() {
 	regex="(git@|https:\/\/)(.*)[:\/](.*)\/(.*).git"
 	if [[ $1 =~ $regex ]]; then
-		host=${BASH_REMATCH[2]}
-		user=${BASH_REMATCH[3]}
-		repo=${BASH_REMATCH[4]}
+		host=$match[2]
+		user=$match[3]
+		repo=$match[4]
 		root=$GITROOT || $PWD
 		dir="$root/$host/$user"
 		mkdir -vp $dir
