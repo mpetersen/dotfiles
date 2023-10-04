@@ -12,7 +12,7 @@ apps=(
   "/Applications/IntelliJ IDEA CE.app"
   /Applications/Slack.app
   /System/Applications/Messages.app
-  "/Applications/Microsoft Edge.app"
+  /Applications/Arc.app
   /Applications/Safari.app
 )
 
