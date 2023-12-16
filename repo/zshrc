@@ -7,8 +7,7 @@ fi
 
 export JAVA_HOME=$(/usr/libexec/java_home)
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
-export PATH=$PATH:/usr/local/bin
-export PATH=$PATH:/Applications/IntelliJ\ IDEA\ CE.app/Contents/MacOS
+export PATH=$PATH:/usr/local/bin:$HOME/.dotfiles/scripts
 export GITROOT="$HOME/Code/git"
 
 # Prezto
