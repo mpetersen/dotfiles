@@ -38,7 +38,12 @@ sudo fdesetup enable
 log "Install Homebrew"
 if ! hash "brew"; then
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-eval "$(/opt/homebrew/bin/brew shellenv)"
+if [ -d "/opt/homebrew" ]; then
+  HOMEBREW_HOME="/opt/homebrew"
+else
+  HOMEBREW_HOME="/usr/local"
+fi
+eval "$($HOMEBREW_HOME/bin/brew shellenv)"
 fi
 
 # Install brew and taps
