@@ -25,3 +25,7 @@ function gitcd() {
 		cd $repo
 	fi
 }
+
+function docky() {
+  docker run -it -v $PWD:$PWD -w $PWD $1 /bin/bash
+}
