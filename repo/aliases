@@ -29,3 +29,9 @@ function gitcd() {
 function docky() {
   docker run -it -v $PWD:$PWD -w $PWD $1 /bin/bash
 }
+
+function mount_nikon() {
+    sudo mkdir /Volumes/NIKON\ Z\ 7_2
+    sudo mount -w -t exfat /dev/disk6s1 /Volumes/NIKON\ Z\ 7_2
+    open /Volumes/NIKON\ Z\ 7_2
+}
