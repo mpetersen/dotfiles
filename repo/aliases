@@ -5,7 +5,7 @@ alias mvncr="mvn clean release:prepare release:perform"
 # ------------------------------------------------------------------------------
 
 # make directory and change into it
-mkcd() { mkdir -p "$1" && cd "$1"; }
+function mkcd() { mkdir -p "$1" && cd "$1"; }
 
 # checkout code in the right directory and change to directory
 function gitcd() {
