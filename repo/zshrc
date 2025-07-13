@@ -4,9 +4,9 @@ export PATH=$PATH:/usr/local/bin:$HOME/.dotfiles/scripts
 export GITROOT="$HOME/Code/git"
 
 # Prezto
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
+#if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+#  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+#fi
 
 source ~/.exports_private
 source ~/.aliases
