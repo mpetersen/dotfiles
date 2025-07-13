@@ -6,14 +6,11 @@ dockutil --remove all --no-restart
 apps=(
   /Applications/iTerm.app
   /Applications/Bitwarden.app
-  "/Applications/Microsoft Outlook.app"
   /System/Applications/Mail.app
+  /Applications/Safari.app
   /System/Applications/Calendar.app
   "/Applications/IntelliJ IDEA CE.app"
-  /Applications/Slack.app
   /System/Applications/Messages.app
-  /Applications/Arc.app
-  /Applications/Safari.app
 )
 
 for app in "${apps[@]}"; do
