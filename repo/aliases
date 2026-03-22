@@ -13,6 +13,7 @@ function gitcd() {
 		mkdir -vp $dir
 		echo "cd $dir"
 		cd $dir
+		# return
 		if [ ! -d "$repo" ]; then
 			echo "New git repo"
 			git clone $1
