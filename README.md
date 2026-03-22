@@ -16,7 +16,7 @@ Download
 To download dotfiles repository, execute the following command in the terminal:
 
 ```
-git clone git@github.com:mpetersen/dotfiles.git && mv dotfiles ~/.dotfiles
+git clone https://github.com/mpetersen/dotfiles.git && mv dotfiles ~/.dotfiles
 ```
 
 If you are executing this command on a new Mac, `git` might not be installed yet. However, you will be prompted to install the command line developer tools.

@@ -8,7 +8,12 @@ export GITROOT="$HOME/Code/git"
 source ~/.exports_private
 source ~/.aliases
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
+if [ -d "/opt/homebrew" ]; then
+  HOMEBREW_HOME="/opt/homebrew"
+else
+  HOMEBREW_HOME="/usr/local"
+fi
+eval "$($HOMEBREW_HOME/bin/brew shellenv)"
 
 # Install pure prompt
 autoload -U promptinit; promptinit
