@@ -1,11 +1,5 @@
-# Aliases for work -------------------------------------------------------------
-alias mvnsci="mvn -DskipTests -DskipTessa -Dfindbugs.skip=true -Dcheckstyle.skip=true clean install"
-alias mvnci="mvn clean install"
-alias mvncr="mvn clean release:prepare release:perform"
-# ------------------------------------------------------------------------------
-
 # make directory and change into it
-mkcd() { mkdir -p "$1" && cd "$1"; }
+function mkcd() { mkdir -p "$1" && cd "$1"; }
 
 # checkout code in the right directory and change to directory
 function gitcd() {
@@ -17,6 +11,7 @@ function gitcd() {
 		root=$GITROOT || $PWD
 		dir="$root/$host/$user"
 		mkdir -vp $dir
+		echo "cd $dir"
 		cd $dir
 		if [ ! -d "$repo" ]; then
 			echo "New git repo"
@@ -24,4 +19,17 @@ function gitcd() {
 		fi
 		cd $repo
 	fi
+}
+
+# launch podman container in the current directory
+function poddy() {
+  IMAGE=$1
+  NAME="${2:-$1}"
+  podman run -it --name poddy_$NAME -v $PWD:$PWD:z -w $PWD $IMAGE /bin/bash
+  podman rm -if poddy_$1
+}
+
+# directory listing shortcut
+function la() {
+  ls -la
 }

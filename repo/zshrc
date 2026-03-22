@@ -1,25 +1,15 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 export JAVA_HOME=$(/usr/libexec/java_home)
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 export PATH=$PATH:/usr/local/bin
-export PATH=$PATH:/Applications/IntelliJ\ IDEA\ CE.app/Contents/MacOS
+export PATH=$PATH:/Users/moritz/.cargo/bin
+export PATH=$PATH:/Applications/IntelliJ\ IDEA.app/Contents/MacOS
 export GITROOT="$HOME/Code/git"
-
-# Prezto
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
 
 source ~/.exports_private
 source ~/.aliases
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# Install pure prompt
+autoload -U promptinit; promptinit
+prompt pure
